@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Identity — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+
+    <meta property="og:title" content="Retro Identity — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Punk-inspired visual identity featuring high-impact CMYK palettes and custom typography."
+    />
+    <meta
+      property="og:url"
+      content="https://arevalo.design/projects/retro-identity.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/cover-preview.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/script.js" defer></script>
+
+    <link
+      rel="icon"
+      href="../assets/favicon/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/favicon/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-brand"> arevalo.design </a>
+
+      <div class="nav-projects">
+        <a href="../index.html">ALBUM ROLLOUT</a>
+        <a href="transit-system.html">TRANSIT SYSTEM</a>
+        <a href="retro-identity.html" class="active">RETRO IDENTITY</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="../about.html">About</a>
+      </div>
+    </nav>
+    <main class="content-page project-single">
+      <div class="hero-box">
+        <div class="hero-header hero-header-compact">
+          <span class="date-label">FEBRUARY 2026</span>
+          <span class="main-title">RETRO IDENTITY</span>
+        </div>
+        <img src="../assets/retro/cover.jpg" alt="Hero" />
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          An emerging artist in the New Wave genre required a comprehensive
+          album rollout. The concept explores the duality of a high-profile
+          female rockstar whose life is both glamorous and gritty. This identity
+          focuses on the tension between fame and the raw reality of the music
+          scene.
+        </p>
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE SYSTEM</h3>
+        <p>
+          The visual identity utilizes a high-saturation CMYK palette for
+          maximum visual impact. Through extensive research and sketching, a
+          custom band logo was developed to reflect the lead singer's specific
+          personal style. This system leans into the aggressive, high-energy
+          aesthetic that defined the New Wave movement.
+        </p>
+      </div>
+
+      <div class="palette-strip">
+        <div class="swatch" style="background: #ff007f; color: white">
+          #FF007F
+        </div>
+        <div class="swatch" style="background: #00e5ff; color: #222">
+          #00E5FF
+        </div>
+        <div class="swatch" style="background: #ffff00; color: #222">
+          #FFFF00
+        </div>
+        <div class="swatch" style="background: #221f1f; color: white">
+          #221F1F
+        </div>
+        <div class="swatch" style="background: #ffffff">#FFFFFF</div>
+      </div>
+
+      <div class="texture-grid gallery-group">
+        <div class="texture">
+          <div class="asset-label">Lead Persona</div>
+          <img src="../assets/retro/mindmap.jpg" />
+        </div>
+        <div class="texture">
+          <div class="asset-label">A-B List Brainstorming</div>
+          <img src="../assets/retro/brainstorm.webp" />
+        </div>
+        <div class="texture">
+          <div class="asset-label">Logo</div>
+          <img src="../assets/retro/logo.webp" />
+        </div>
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          The final product is a clean 80s New Wave punk identity. With an "in
+          your face" hot pink at the center, the design balances a Barbie
+          aesthetic with the raw intensity of a tiger. This contrast creates a
+          visual style that is both striking and unapologetically bold.
+        </p>
+      </div>
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box"><img src="../assets/retro/back.webp" /></div>
+        <div class="grid-box"><img src="../assets/retro/cd-1.webp" /></div>
+        <div class="grid-box"><img src="../assets/retro/cd-2.webp" /></div>
+      </div>
+      <section class="next-project">
+        <a href="../index.html" class="next-link">
+          <span class="next-label">NEXT PROJECT</span>
+          <span class="next-title">ALBUM ROLLOUT</span>
+        </a>
+      </section>
+    </main>
+
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+      <img class="modal-content" id="modalImg" />
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>

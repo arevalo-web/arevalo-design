@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transit System — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta
+      property="og:title"
+      content="V.E.R.T. Transit System — arevalo.design"
+    />
+    <meta
+      property="og:description"
+      content="Technical wayfinding and grid systems for urban infrastructure."
+    />
+    <meta
+      property="og:url"
+      content="https://arevalo.design/projects/transit-system.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/poster-preview.webp"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/script.js" defer></script>
+    <link
+      rel="icon"
+      href="../assets/favicon/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/favicon/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-brand"> arevalo.design </a>
+
+      <div class="nav-projects">
+        <a href="../index.html">ALBUM ROLLOUT</a>
+        <a href="transit-system.html" class="active">TRANSIT SYSTEM</a>
+        <a href="retro-identity.html">RETRO IDENTITY</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="../about.html">About</a>
+      </div>
+    </nav>
+
+    <main class="content-page project-single">
+      <div class="hero-box">
+        <div class="hero-header hero-header-compact">
+          <span class="date-label">NOVEMBER 2025</span>
+          <span class="main-title">TRANSIT SYSTEM</span>
+        </div>
+        <img src="../assets/vert/poster.webp" alt="Hero" />
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          Las Vegas requires an underground rapid transit system that is easy to
+          navigate for both tourists and locals. With five new routes being
+          established, the challenge was to design a modern and cohesive transit
+          diagram. This project focuses on simplifying complex city
+          infrastructure into a clear and functional visual guide.
+        </p>
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE SYSTEM</h3>
+        <p>
+          The system uses a vibrant yet functional color palette to ensure each
+          route is distinct and easy to follow. By prioritizing high-contrast
+          colors and a mathematical 45-degree grid, the layout achieves a
+          balance between technical precision and approachability. This modular
+          design is built to be easily replicable as the transit network grows.
+        </p>
+      </div>
+      <div class="texture-grid gallery-group">
+        <div class="texture">
+          <div class="asset-label">Icon System</div>
+          <img src="../assets/vert/icons.webp" alt="Icons" />
+        </div>
+
+        <div class="texture">
+          <div class="asset-label">Logo</div>
+          <img src="../assets/vert/logo.webp" alt="Logo" />
+        </div>
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          A clean sans-serif typeface combined with simplified iconography
+          ensures maximum legibility in high-traffic environments. The final
+          design aids in rapid wayfinding and passenger flow through the city.
+          This system transforms the underground experience into a predictable
+          and efficient journey for every passenger.
+        </p>
+      </div>
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box"><img src="../assets/vert/sign-1.webp" /></div>
+        <div class="grid-box"><img src="../assets/vert/sign-2.webp" /></div>
+        <div class="grid-box"><img src="../assets/vert/sign-3.webp" /></div>
+        <div class="grid-box"><img src="../assets/vert/sign-4.webp" /></div>
+        <div class="grid-box"><img src="../assets/vert/sign-5.webp" /></div>
+      </div>
+      <section class="next-project">
+        <a href="retro-identity.html" class="next-link">
+          <span class="next-label">NEXT PROJECT</span>
+          <span class="next-title">RETRO IDENTITY</span>
+        </a>
+      </section>
+    </main>
+
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+
+      <img class="modal-content" id="modalImg" />
+
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>

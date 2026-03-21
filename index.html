@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Rollout — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+
+    <meta property="og:title" content="Eribert Arevalo — Design Archive" />
+    <meta
+      property="og:description"
+      content="Visual identity and brand strategy for Lil Uzi Vert, V.E.R.T. Transit, and more."
+    />
+    <meta property="og:url" content="https://arevalo.design/" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/uzi-preview.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-brand">arevalo.design</a>
+
+      <div class="nav-projects">
+        <a href="index.html" class="active">ALBUM ROLLOUT</a>
+        <a href="projects/transit-system.html">TRANSIT SYSTEM</a>
+        <a href="projects/retro-identity.html">RETRO IDENTITY</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+
+    <main class="content-page project-single">
+      <div class="hero-box">
+        <div class="hero-header hero-header-compact">
+          <span class="date-label">DECEMBER 2025</span>
+          <span class="main-title">ALBUM ROLLOUT</span>
+        </div>
+        <img src="assets/uzi/uzi-vinyl.webp" alt="Album Rollout" />
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          Lil Uzi Vert’s visual history is defined by psychedelic saturation.
+          This rollout required a total departure from that legacy to establish
+          a new, celestial era for the artist.
+        </p>
+      </div>
+
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          A cinematic narrative following a cosmic entity through high-impact
+          environments. This reimagined release positions the artist’s visual
+          identity as a refined, ethereal progression rather than a repeat of
+          previous eras.
+        </p>
+      </div>
+
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img
+            src="assets/uzi/uzi-poster.webp"
+            alt="Album rollout poster mockup"
+          />
+        </div>
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img src="assets/uzi/wall-poster.webp" alt="Wall poster mockup" />
+        </div>
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img src="assets/uzi/uzi-insta.webp" alt="Instagram post mockup" />
+        </div>
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img
+            src="assets/uzi/uzi-stories.webp"
+            alt="Instagram stories mockup"
+          />
+        </div>
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img src="assets/uzi/uzi-hoodie.webp" alt="Hoodie mockup" />
+        </div>
+        <div class="grid-box">
+          <div class="hover-overlay"><div class="plus-icon"></div></div>
+          <img src="assets/uzi/uzi-tshirt.webp" alt="T-shirt mockup" />
+        </div>
+      </div>
+
+      <section class="next-project">
+        <a href="projects/transit-system.html" class="next-link">
+          <span class="next-label">NEXT PROJECT</span>
+          <span class="next-title">TRANSIT SYSTEM</span>
+        </a>
+      </section>
+    </main>
+
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+      <img class="modal-content" id="modalImg" alt="Expanded project image" />
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>
