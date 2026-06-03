@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badlands — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta property="og:title" content="Badlands — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Brand identity and magazine design for Badlands."
+    />
+    <meta
+      property="og:url"
+      content="https://arevalo.design/projects/badlands.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/prefrontmag.jpg"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/script.js" defer></script>
+    <link
+      rel="icon"
+      href="../assets/favicon/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/favicon/apple-touch-icon.png"
+    />
+
+    <style>
+      /* ── Warm tan background ── */
+      body.page-tan {
+        background: #e8dcc5;
+        color: #e8dcc5;
+      }
+
+      body.page-tan .strategy-box h3 {
+        color: #b08d55;
+      }
+      body.page-tan .strategy-box p {
+        color: #4f3828;
+        text-wrap: pretty;
+      }
+      body.page-tan .next-link {
+        color: #4f3828;
+      }
+      body.page-tan .next-label {
+        color: #b08d55;
+      }
+      body.page-tan .next-link:hover .next-title {
+        color: var(--orange);
+      }
+      body.page-tan #backToTop {
+        background: #785135;
+        border: 1px solid rgba(232, 220, 197, 0.4);
+      }
+      body.page-tan #backToTop svg {
+        stroke: #e8dcc5;
+      }
+      .grid-box.bg-navy {
+        background: #e8dcc5;
+      }
+      body.page-tan #backToTop:hover svg {
+        stroke: #ff5e00;
+      }
+      /* ── @ eribert arevalo naeme at that bottom── */
+      body.page-tan .site-footer {
+        color: #b08d55;
+
+        border-top: none;
+      }
+      body.page-tan .next-project {
+        background: #e8dcc5;
+        border-top: none;
+        border-bottom: none;
+      }
+
+      /* ── Tan modal ── */
+      body.page-tan .modal {
+        background: #785135;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      body.page-tan .close,
+      body.page-tan .modal-nav,
+      body.page-tan .counter {
+        color: #f0dfc0;
+      }
+      body.page-tan .modal-nav:hover {
+        color: #ffffff;
+      }
+
+      /* ── Hero: side-by-side layout ── */
+      .hero-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: unset;
+        display: flex;
+        flex-direction: column; /* This forces the stacked layout */
+        background: #c8a882;
+        border-bottom: none;
+      }
+
+      .hero-image-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        overflow: hidden;
+        max-height: 100vh;
+      }
+
+      .hero-image-wrap .grid-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-image-wrap img {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        object-fit: contain; /* Shrinks the image to fit the new height without cropping */
+        display: block;
+      }
+      .hero-intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* add this */
+        text-align: center; /* add this */
+        padding: 70px var(--space-lg) 30px;
+        background: #e8dcc5;
+      }
+
+      .hero-intro .date-label {
+        display: block;
+        font-size: var(--fs-label);
+        font-weight: 600;
+        letter-spacing: var(--tracking-wide);
+        color: #b08d55;
+        margin-bottom: 12px;
+      }
+
+      .hero-intro .main-title {
+        display: block;
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        color: #4f3828;
+        margin-bottom: 24px;
+      }
+
+      .hero-intro .hero-description {
+        padding: 0% var(--space-lg);
+        font-size: var(--fs-body);
+        line-height: 1.6;
+        color: #4f3828;
+        max-width: 600px;
+        text-align: center; /* add this */
+        text-wrap: pretty;
+      }
+
+      /* ── Grid backgrounds ── */
+      .grid-box.bg-tan {
+        background: #e8dcc5;
+      }
+      .grid-box.bg-light {
+        background: #4f3828;
+      }
+      .grid-box.bg-dark {
+        background: #785135;
+      }
+
+      /* ── Mockup grid — match album rollout ── */
+      .project-single .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+      /* Set the box container size and add padding to shrink the images inside */
+      .mockup-grid .grid-box {
+        aspect-ratio: 19 / 9; /* Or 4/3, etc. depending on your preferred height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .mockup-grid .grid-box img,
+      .mockup-grid .grid-box video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .mockup-grid .grid-box.grid-box--back {
+        width: 120%; /* Change this from 200% to something smaller */
+        align-self: center;
+        margin-left: -10%; /* Adjust this to keep it centered based on your new width */
+        overflow: hidden;
+      }
+      .mockup-grid .grid-box:hover img {
+        transform: scale(1.02);
+      }
+      /* ── Next Project Arrow Layout (Badlands) ── */
+      body.page-tan .arrow-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #4f3828;
+      }
+
+      body.page-tan .arrow-link .next-title {
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        margin-right: 32px;
+        transition: color 0.3s ease;
+      }
+
+      body.page-tan .arrow-link svg {
+        width: 48px;
+        height: 48px;
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+
+      body.page-tan .arrow-link:hover,
+      body.page-tan .arrow-link:hover .next-title {
+        color: var(--orange);
+      }
+
+      body.page-tan .arrow-link:hover svg {
+        transform: translateX(10px);
+      }
+      /* 1. Stronger selector to remove padding without using !important */
+      .project-single .mockup-grid .grid-box.no-padding {
+        padding: 0;
+        aspect-ratio: auto; /* Let the video naturally set the height */
+      }
+
+      /* 2. Force the video to touch the edges without letterboxing */
+      .project-single .mockup-grid .grid-box.no-padding video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .hero-box {
+          grid-template-columns: 1fr;
+          aspect-ratio: auto;
+          min-height: auto;
+        }
+
+        /* Hero image — heavily zoomed */
+        .hero-image-wrap {
+          width: 100%;
+          align-self: center;
+          padding: 0;
+          overflow: hidden;
+        }
+
+        .hero-image-wrap img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+
+        .hero-intro {
+          padding: 60px 16px 32px;
+        }
+
+        .hero-intro .main-title {
+          letter-spacing: -1px;
+        }
+
+        .mockup-grid .grid-box {
+          height: auto;
+          padding: 0;
+          aspect-ratio: unset;
+        }
+
+        /* Magazine spreads — slightly zoomed */
+        .mockup-grid .grid-box.bg-tan {
+          width: 130%;
+          align-self: center;
+          margin-left: -15%;
+          overflow: hidden;
+        }
+
+        /* BACK cover — heavily zoomed like hero */
+        .mockup-grid .grid-box.grid-box--back {
+          width: 200%;
+          align-self: center;
+          margin-left: -50%;
+          overflow: hidden;
+        }
+        .modal-content {
+          width: 100%;
+          max-width: none;
+          height: auto;
+          object-fit: contain;
+          pointer-events: none; /* Keep this so buttons click through */
+        }
+        .mockup-grid .grid-box.grid-box--back {
+          width: 100%; /* Change this from 200% to something smaller */
+          align-self: center;
+          margin-left: 0%; /* Adjust this to keep it centered based on your new width */
+          overflow: hidden;
+        }
+        #modalImg[src*="spreadone"],
+        #modalImg[src*="spreadtwo"],
+        #modalImg[src*="spreadthree"] {
+          transform: scale(1.35);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="page-tan">
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-brand">arevalo.design</a>
+      <div class="nav-projects-group">
+        <span class="nav-projects-label">PROJECTS</span>
+        <div class="nav-projects">
+          <a href="../index.html">ROLLOUT</a>
+          <a href="badlands.html" class="active">BADLANDS</a>
+          <a href="newwave.html">NEWWAVE</a>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="../about.html">About</a>
+      </div>
+    </nav>
+
+    <main class="content-page project-single">
+      <!-- HERO: side-by-side -->
+      <div class="hero-box">
+        <div class="hero-intro">
+          <span class="date-label">MAY 2026</span>
+          <span class="main-title">BADLANDS</span>
+          <p class="hero-description">
+            A conceptual fashion and culture magazine focused on garments,
+            people, and environments shaped by time, utility, and durability.
+          </p>
+        </div>
+        <div class="hero-image-wrap gallery-group">
+          <div class="grid-box bg-tan">
+            <img
+              src="../assets/badlands/frontmag.webp"
+              fetchpriority="high"
+              alt="Magazine Cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PROBLEM -->
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          Modern fashion media is driven by fleeting trends. The challenge was
+          to design a publication that documents clothing through a different
+          lens, valuing longevity, function, and personal history over seasonal
+          relevance.
+        </p>
+      </div>
+
+      <!-- THE SYSTEM -->
+      <div class="strategy-box">
+        <h3>THE SYSTEM</h3>
+        <p>
+          The visual identity utilizes a restrained editorial approach inspired
+          by workwear and utilitarian design. A muted color palette, structured
+          grid, and minimal typography allow the stories and imagery to lead.
+        </p>
+      </div>
+
+      <!-- THE RESULT -->
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          A cohesive brand that feels grounded and timeless. Through
+          documentary-style photography and clear editorial design, Badlands
+          establishes a unique voice in fashion publishing that celebrates
+          craftsmanship.
+        </p>
+      </div>
+
+      <!-- MAGAZINE SPREADS -->
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box bg-tan">
+          <img
+            src="../assets/badlands/spreadone.webp"
+            alt="Badlands spread 1"
+          />
+        </div>
+        <div class="grid-box bg-tan">
+          <img
+            src="../assets/badlands/spreadtwo.webp"
+            alt="Badlands spread 2"
+          />
+        </div>
+        <div class="grid-box bg-tan">
+          <img
+            src="../assets/badlands/spreadthree.webp"
+            alt="Badlands spread 3"
+          />
+        </div>
+
+        <div class="grid-box bg-tan grid-box--back">
+          <img
+            src="../assets/badlands/backmag.webp"
+            alt="Badlands back cover"
+          />
+        </div>
+      </div>
+      <!-- BRAND GUIDE -->
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box bg-dark">
+          <img
+            src="../assets/badlands/frontbrand.webp"
+            alt="Brand guide front"
+          />
+        </div>
+
+        <div class="grid-box bg-dark">
+          <img
+            src="../assets/badlands/onebrand.webp"
+            alt="Brand guide spread 3"
+          />
+        </div>
+        <div class="grid-box bg-dark">
+          <img
+            src="../assets/badlands/twobrand.webp"
+            alt="Brand guide spread 5"
+          />
+        </div>
+        <div class="grid-box bg-dark">
+          <img
+            src="../assets/badlands/threebrand.webp"
+            alt="Brand guide spread 6"
+          />
+        </div>
+        <div class="grid-box bg-dark">
+          <img
+            src="../assets/badlands/fourthbrand.webp"
+            alt="Brand guide spread 6"
+          />
+        </div>
+        <div class="grid-box bg-dark">
+          <img src="../assets/badlands/backbrand.webp" alt="Brand guide back" />
+        </div>
+      </div>
+      <!-- MERCH & DIGITAL -->
+      <div class="mockup-grid gallery-group">
+        <div class="grid-box bg-light">
+          <img src="../assets/badlands/hat.webp" alt="Hat mockup" />
+        </div>
+        <div class="grid-box bg-navy">
+          <img src="../assets/badlands/posts.webp" alt="Social posts mockup" />
+        </div>
+        <!-- MacBook video -->
+        <div class="grid-box bg-navy no-padding">
+          <video
+            src="../assets/badlands/website.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <section class="next-project">
+        <span class="next-label">NEXT PROJECT</span>
+        <a href="newwave.html" class="next-link arrow-link">
+          <span class="next-title">NEWWAVE</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </a>
+      </section>
+    </main>
+
+    <!-- GALLERY MODAL -->
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+
+      <img class="modal-content" id="modalImg" alt="Expanded project image" />
+      <video
+        class="modal-content"
+        id="modalVid"
+        autoplay
+        loop
+        muted
+        playsinline
+        style="display: none"
+      ></video>
+
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Wave — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta property="og:title" content="80s New Wave — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Punk-inspired visual identity featuring high-impact CMYK palettes and custom typography."
+    />
+    <meta
+      property="og:url"
+      content="https://arevalo.design/projects/newwave.html"
+    />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/prefrontvinyl.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/script.js" defer></script>
+    <link
+      rel="icon"
+      href="../assets/favicon/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/favicon/apple-touch-icon.png"
+    />
+
+    <style>
+      /* ── Dark page override — scoped to this page only ── */
+      body.page-dark {
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+      body.page-dark .strategy-box {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+      }
+      body.page-dark .strategy-box h3 {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      body.page-dark .strategy-box p {
+        color: rgba(255, 255, 255, 0.75);
+        text-wrap: pretty; /* Prevents single words from dangling */
+      }
+
+      body.page-dark .next-link {
+        color: #ffffff;
+      }
+      body.page-dark .next-label {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      body.page-dark #backToTop {
+        background: #0a0a0a;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      body.page-dark #backToTop:hover svg {
+        stroke: #ff5e00;
+      }
+      body.page-dark #backToTop svg {
+        stroke: #ffffff;
+      }
+      body.page-dark .site-footer {
+        border-top-color: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.3);
+      }
+      body.page-dark .hero-box {
+        background: #111;
+      }
+      body.page-dark .grid-box {
+        background: #0a0a0a;
+      }
+
+      .hero-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: unset;
+        min-height: 520px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-intro {
+        padding: 70px var(--space-lg) 0px;
+        text-align: center;
+        background: #0a0a0a;
+      }
+
+      .hero-intro .date-label {
+        display: block;
+        font-size: var(--fs-label);
+        font-weight: 600;
+        letter-spacing: var(--tracking-wide);
+        color: rgba(255, 255, 255, 0.35);
+        margin-bottom: 12px;
+      }
+
+      .hero-intro .main-title {
+        display: block;
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        color: #ffffff;
+        margin-bottom: 24px;
+      }
+
+      .hero-intro .hero-description {
+        padding: 0% var(--space-lg);
+        font-size: var(--fs-body);
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.5);
+        max-width: 600px;
+        margin: 0 auto;
+        text-wrap: pretty;
+      }
+
+      /* Hero image sits below the text block */
+      .hero-image-wrap {
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .hero-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .hero-image-wrap img:hover {
+        transform: scale(1.02);
+      }
+
+      /* ── Mockup grid: full-width single column on project-single ── */
+      .project-single .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+      /* Set the box container size and add padding */
+      .mockup-grid .grid-box {
+        aspect-ratio: 16 / 9; /* Keeps the container a consistent rectangle */
+        padding: 0; /* Increase this number to shrink the images inside */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mockup-grid .grid-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Prevents stretching */
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .grid-box:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Hero image wrap — cursor shows it's clickable */
+      .hero-image-wrap {
+        cursor: pointer;
+      }
+
+      .hero-image-wrap img {
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .hero-image-wrap:hover img {
+        transform: scale(1.02);
+      }
+      /* Charcoal background so black shirts stand out */
+      body.page-dark .grid-box.bg-charcoal {
+        background: #b4055d;
+      }
+
+      /* ── Next Project Arrow Layout (New Wave) ── */
+      body.page-dark .arrow-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #ffffff; /* White text for the dark theme */
+      }
+
+      body.page-dark .arrow-link .next-title {
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        margin-right: 32px;
+        transition: color 0.3s ease;
+      }
+
+      body.page-dark .arrow-link svg {
+        width: 48px;
+        height: 48px;
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+
+      body.page-dark .arrow-link:hover,
+      body.page-dark .arrow-link:hover .next-title {
+        color: var(--orange);
+      }
+
+      body.page-dark .arrow-link:hover svg {
+        transform: translateX(10px);
+      }
+
+      @media (max-width: 768px) {
+        .hero-intro {
+          padding: 60px 16px 32px;
+        }
+        .hero-intro .main-title {
+          letter-spacing: -1px;
+        }
+        .hero-image-wrap {
+          width: 110%;
+          align-self: center;
+          padding: 0px;
+        }
+        .mockup-grid .grid-box {
+          height: auto;
+          padding: 0;
+          aspect-ratio: unset;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="page-dark">
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-brand">arevalo.design</a>
+
+      <div class="nav-projects-group">
+        <span class="nav-projects-label">PROJECTS</span>
+        <div class="nav-projects">
+          <a href="../index.html">ROLLOUT</a>
+          <a href="badlands.html">BADLANDS</a>
+          <a href="newwave.html" class="active">NEWWAVE</a>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="../about.html">About</a>
+      </div>
+    </nav>
+
+    <main class="content-page project-single">
+      <!-- HERO: centered title + description, then full-width image -->
+      <div class="hero-box">
+        <div class="hero-intro">
+          <span class="date-label">MAY 2026</span>
+          <span class="main-title">NEWWAVE</span>
+          <p class="hero-description">
+            A conceptual vinyl package inspired by the 1980s New Wave movement,
+            exploring the tension between glamour and artistic authenticity
+            through a fictional band identity.
+          </p>
+        </div>
+        <div class="hero-image-wrap gallery-group">
+          <div class="grid-box">
+            <img
+              src="../assets/newwave/frontvinyl.webp"
+              fetchpriority="high"
+              alt="Vinyl front mockup"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PROBLEM -->
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          The challenge was creating an identity authentic to the era without
+          mimicking existing covers. Recognizing photography's central role in
+          New Wave records, the design needed to balance polished pop appeal
+          with rebellious energy.
+        </p>
+      </div>
+
+      <!-- THE SYSTEM -->
+      <div class="strategy-box">
+        <h3>THE SYSTEM</h3>
+        <p>
+          The visual language centers on Roxane, the band's lead singer. A
+          high-saturation CMYK palette, bold magenta, leopard textures, and
+          metallic chains blend pop glamour with punk attitude.
+        </p>
+      </div>
+
+      <!-- THE RESULT -->
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          A fully developed vinyl package combining storytelling with a strong
+          visual identity. Through symbolism, Roxane's interaction with a
+          leopard representing her relationship with fame, the project delivers
+          a bold, expressive identity across a complete packaging system.
+        </p>
+      </div>
+
+      <!-- MOCKUP GRID -->
+      <div class="mockup-grid gallery-group">
+        <!-- 1. Vinyl back (R = reverse/back side) -->
+        <div class="grid-box">
+          <img src="../assets/newwave/backvinyl.webp" alt="Vinyl back mockup" />
+        </div>
+
+        <!-- 2. Cassette tape -->
+        <div class="grid-box">
+          <img
+            src="../assets/newwave/cassette.webp"
+            alt="Cassette tape mockup"
+          />
+        </div>
+
+        <!-- 3. Poster -->
+        <div class="grid-box">
+          <img src="../assets/newwave/poster.webp" alt="Poster mockup" />
+        </div>
+
+        <!-- 4. ID & VIP pass -->
+        <div class="grid-box">
+          <img
+            src="../assets/newwave/passandticket.webp"
+            alt="ID and VIP pass mockup"
+          />
+        </div>
+
+        <!-- 5. T-shirt 1 -->
+        <div class="grid-box bg-charcoal">
+          <img src="../assets/newwave/tone.webp" alt="T-shirt mockup 1" />
+        </div>
+
+        <div class="grid-box bg-charcoal">
+          <img src="../assets/newwave/ttwo.webp" alt="T-shirt mockup 2" />
+        </div>
+
+        <div class="grid-box bg-charcoal">
+          <img src="../assets/newwave/tthree.webp" alt="T-shirt mockup 3" />
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <section class="next-project">
+        <span class="next-label">NEXT PROJECT</span>
+        <a href="../index.html" class="next-link arrow-link">
+          <span class="next-title">ROLLOUT</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </a>
+      </section>
+    </main>
+
+    <!-- GALLERY MODAL -->
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+      <img class="modal-content" id="modalImg" />
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>

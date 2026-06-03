@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rollout — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta property="og:title" content="Eribert Arevalo — Design Archive" />
+    <meta
+      property="og:description"
+      content="Visual identity and brand strategy for Lil Uzi Vert, Badlands Magazine, and more."
+    />
+    <meta property="og:url" content="https://arevalo.design/" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/precdcover.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+
+    <style>
+      /* ── Off-white modal to match page background ── */
+      .modal {
+        background: rgba(247, 247, 247, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .close,
+      .modal-nav,
+      .counter {
+        color: #2a2a2a;
+      }
+
+      .modal-nav:hover {
+        color: var(--orange);
+      }
+      /* ── Near-white background for this page ── */
+      body {
+        background: #f7f7f7;
+      }
+
+      /* ── Hero: centered title + description layout ── */
+      .hero-box {
+        position: relative;
+        width: 100%;
+        aspect-ratio: unset;
+        display: flex;
+        flex-direction: column;
+        background: #f7f7f7;
+        border-bottom: none;
+      }
+
+      .hero-intro {
+        padding: 70px var(--space-lg) 0px;
+        text-align: center;
+        background: #f7f7f7;
+      }
+
+      .hero-intro .date-label {
+        display: block;
+        font-size: var(--fs-label);
+        font-weight: 600;
+        letter-spacing: var(--tracking-wide);
+        color: var(--text-muted);
+        margin-bottom: 12px;
+      }
+
+      .hero-intro .main-title {
+        display: block;
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+
+      .hero-intro .hero-description {
+        text-align: center;
+        padding: 0% var(--space-lg);
+        font-size: var(--fs-body);
+        line-height: 1.6;
+        color: var(--text-soft);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Hero image below text */
+      .hero-image-wrap .grid-box {
+        border: none;
+      }
+
+      .hero-image-wrap {
+        width: 100%;
+        height: auto;
+        display: block;
+        aspect-ratio: 16 / 9;
+      }
+      .hero-image-wrap:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Grid images — natural height, no overlay */
+      .project-single .mockup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .grid-box {
+        background: #f7f7f7;
+      }
+      .grid-box:hover img {
+        transform: scale(1.02);
+      }
+      .mockup-grid .grid-box {
+        /* This creates a specific box size for the images to sit inside */
+        aspect-ratio: 18 / 9;
+        padding: 30px; /* Increase this number to make the images smaller */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mockup-grid .grid-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Locks aspect ratio so it doesn't stretch */
+        display: block;
+      }
+      /* ── Next Project Arrow Layout (Album Rollout) ── */
+      .arrow-link {
+        color: var(
+          --text
+        ); /* Forces the dark grey text instead of default blue */
+      }
+
+      .arrow-link .next-title {
+        font-size: clamp(48px, 8vw, 100px);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        transition: color 0.3s ease;
+      }
+
+      .arrow-link:hover,
+      .arrow-link:hover .next-title {
+        color: var(--orange);
+      }
+      @media (max-width: 768px) {
+        .hero-intro {
+          padding: 60px 16px 32px;
+        }
+        .hero-image-wrap {
+          width: 170%;
+          align-self: center;
+          padding: 0px;
+        }
+        .mockup-grid .grid-box {
+          height: 100%;
+          aspect-ratio: unset;
+        }
+        .mockup-grid .grid-box img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+        .hero-intro .main-title {
+          letter-spacing: -1px;
+        }
+        .mockup-grid .grid-box--wide {
+          width: 170%;
+          align-self: center;
+          margin-left: -35%;
+        }
+        .modal-content {
+          width: 100%;
+          max-width: none;
+          height: auto;
+          object-fit: contain;
+          pointer-events: none; /* Allows clicks to pass through the expanded image edges */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-brand">arevalo.design</a>
+
+      <div class="nav-projects-group">
+        <span class="nav-projects-label">PROJECTS</span>
+        <div class="nav-projects">
+          <a href="index.html" class="active">ROLLOUT</a>
+          <a href="projects/badlands.html">BADLANDS</a>
+          <a href="projects/newwave.html">NEWWAVE</a>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+
+    <main class="content-page project-single">
+      <!-- HERO: centered title + description, then full-width image -->
+      <div class="hero-box">
+        <div class="hero-intro">
+          <span class="date-label">DECEMBER 2025</span>
+          <span class="main-title">ROLLOUT</span>
+          <p class="hero-description">
+            A conceptual visual re-release of Lil Uzi Vert's Luv Is Rage 2,
+            reimagining the album’s identity while maintaining the artist's
+            distinctive style.
+          </p>
+        </div>
+        <div class="hero-image-wrap gallery-group">
+          <div class="grid-box">
+            <img
+              src="assets/uzi/frontcd.webp"
+              fetchpriority="high"
+              alt="CD cover front and back"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PROBLEM -->
+      <div class="strategy-box">
+        <h3>THE PROBLEM</h3>
+        <p>
+          Lil Uzi Vert’s aesthetic is defined by vibrant colors, surreal
+          environments, and cosmic themes. The challenge was to create a fresh,
+          unexpected visual direction that still felt authentic to his
+          established brand.
+        </p>
+      </div>
+
+      <!-- THE RESULT -->
+      <div class="strategy-box">
+        <h3>THE RESULT</h3>
+        <p>
+          A monochromatic, ethereal interpretation of the album’s space-inspired
+          themes. Influenced by cyber sigilism, the design transforms the
+          original vibrant energy into a darker, atmospheric system extending
+          across packaging and merchandise.
+        </p>
+      </div>
+
+      <!-- MOCKUP GRID -->
+      <div class="mockup-grid gallery-group">
+        <!-- 1. CD back -->
+        <div class="grid-box grid-box--wide">
+          <img src="assets/uzi/backcd.webp" alt="CD cover back" />
+        </div>
+
+        <!-- 2. Jewel case inside -->
+        <div class="grid-box">
+          <img src="assets/uzi/insidecd.webp" alt="CD jewel case inside" />
+        </div>
+
+        <!-- 3. Double posters -->
+        <div class="grid-box">
+          <img src="assets/uzi/posters.webp" alt="Tour posters" />
+        </div>
+
+        <!-- 4. Instagram posts -->
+        <div class="grid-box">
+          <img src="assets/uzi/igposts.webp" alt="Instagram post mockups" />
+        </div>
+
+        <!-- 5. Phone stories -->
+        <div class="grid-box">
+          <img src="assets/uzi/stories.webp" alt="Phone story mockups" />
+        </div>
+
+        <!-- 6. T-shirt and hoodie -->
+        <div class="grid-box">
+          <img src="assets/uzi/merch.webp" alt="T-shirt and hoodie designs" />
+        </div>
+      </div>
+
+      <!-- NEXT PROJECT -->
+      <section class="next-project">
+        <span class="next-label">NEXT PROJECT</span>
+        <a href="projects/badlands.html" class="next-link arrow-link">
+          <span class="next-title">BADLANDS</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </a>
+      </section>
+    </main>
+
+    <!-- GALLERY MODAL -->
+    <div id="galleryModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="modal-nav prev" onclick="changeImage(-1)">&#10094;</span>
+      <img class="modal-content" id="modalImg" alt="Expanded project image" />
+      <span class="modal-nav next" onclick="changeImage(1)">&#10095;</span>
+      <div class="counter" id="modalCounter">01 / 00</div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div id="backToTop" onclick="scrollToTop()">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </div>
+
+    <footer class="site-footer">
+      <p>© 2026 Eribert Arevalo</p>
+    </footer>
+  </body>
+</html>
