@@ -1,0 +1,880 @@
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root {
+  /* Color */
+  --color-bg:        #161616;
+  --color-dark-gray: #3B3B3B;
+  --color-body:      #8C8C8C;
+  --color-light:     #CBCBCB;
+  --color-accent:    #D9D9D9; 
+  --color-orange:    #FF5E00; 
+
+  /* Type: Inter, role-based scale */
+  --font-family: 'Inter', -apple-system, sans-serif;
+
+  --title-weight: 900; --title-size: 48px; --title-lh: 120px;
+  --h1-weight: 800;     --h1-size: 30px;   --h1-lh: 40px;
+  --h2-weight: 600;     --h2-size: 20px;   --h2-lh: 30px;
+  --body-weight: 400;   --body-size: 14px; --body-lh: 18px;
+  --caption-size: 12px; --caption-lh: 20px;
+  --button-weight: 700; --button-size: 14px; --button-lh: 18px;
+
+  /* Spacing — base-8 / base-4 scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+
+  --nav-height: 96px;
+  
+}
+/* =========================================================
+   Fonts — self-hosted Inter, no Google Fonts
+   ========================================================= */
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/inter-v20-latin-regular.woff2') format('woff2'); 
+}
+/* inter-italic - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/inter-v20-latin-italic.woff2') format('woff2'); 
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/inter-v20-latin-600.woff2') format('woff2'); 
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/inter-v20-latin-700.woff2') format('woff2'); 
+}
+/* inter-800 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/inter-v20-latin-800.woff2') format('woff2'); 
+}
+/* inter-900 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../assets/fonts/inter-v20-latin-900.woff2') format('woff2'); 
+}
+
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+html.page-about { overflow-y: scroll; }
+body {
+  background: var(--color-bg);
+  color: var(--color-light);
+  font-family: var(--font-family);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+button { font-weight: var(--button-weight); padding: var(--space-2) var(--space-4); border: none; background: none; font-family: inherit; }
+/* Type utility classes */
+.title   { font-weight: var(--title-weight); font-size: var(--title-size); line-height: 1.05; letter-spacing: -0.02em; }
+.h1      { font-weight: var(--h1-weight); font-size: var(--h1-size); line-height: var(--h1-lh); color: var(--color-body); }
+.h2      { font-weight: var(--h2-weight); font-size: var(--h2-size); line-height: var(--h2-lh); color: var(--color-body); }
+.body    { font-weight: var(--body-weight); font-size: var(--body-size); line-height: var(--body-lh); color: var(--color-body); }
+.caption { font-style: italic; font-size: var(--caption-size); line-height: var(--caption-lh); color: var(--color-body); text-transform: uppercase; letter-spacing: 0.08em; }
+/* =========================================================
+    TYPOGRAPHY — text-wrap: pretty / balance
+    ========================================================= */
+.body,
+.hero__sub,
+.about-intro__text {
+
+  text-wrap: pretty;
+}
+.title {
+  text-wrap: balance;
+}
+
+/* =========================================================
+   GLASSMORPHISM — shared utility
+   ========================================================= */
+.glass, .glass-dark {
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+.glass-dark {
+  background: rgba(141, 141, 141, 0.35);
+}
+/* =========================================================
+   TOP NAV
+   ========================================================= */
+.topbar {
+  position: fixed;
+  top: var(--space-6);
+  left: var(--space-6);
+  right: var(--space-6);
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.tabgroup {
+  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* The label itself never changes appearance — it's a static toggle handle */
+.tabgroup__label {
+  border-radius: var(--space-2);
+  grid-column: 1; grid-row: 1;
+  font-weight: var(--button-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  padding: var(--space-2) var(--space-2);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  min-width: 110px;
+  text-align: center;
+    transition: border-radius 0.35s ease;
+
+}
+.tabgroup:has(.tabgroup__collapse:not(.collapsed)) .tabgroup__label {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* Collapse wrapper — grid-rows trick animates height smoothly without JS
+   measuring content, and doubles as the "in/out" motion for the toggle. */
+.tabgroup__collapse {
+  display: grid;
+  grid-column: 1 / -1; grid-row: 2;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s ease;
+}
+html.tabs-preload-closed .tabgroup__collapse {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.tabgroup__collapse.collapsed {
+  grid-template-rows: 0fr;
+}
+
+/* Background, border, blur all come from .glass (added in HTML) — square
+   corners happen automatically since .glass sets no border-radius. */
+.tabgroup__row {
+  border-radius: var(--space-2);
+  border-top-left-radius: 0;
+  transition: border-radius 0.35s ease;
+  display: grid;
+  overflow: hidden;
+  min-height: 0;
+  grid-template-columns: repeat(3, 1fr);
+}
+.tabgroup__collapse.collapsed .tabgroup__row {
+  visibility: hidden;
+}
+.tab {
+  text-align: center;
+  padding: var(--space-2) var(--space-4);
+  border: none; appearance: none; -webkit-appearance: none;
+  font-weight: var(--button-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  text-decoration: none;
+  display: inline-block;
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.10);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.tab:last-child { border-right: none; }
+
+/* Tiny, subtle interaction cues — not a restyle, just a nudge */
+.tab:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-orange);
+  transform: translateY(-1px);
+}
+.tab:active { transform: translateY(0) scale(0.97); }
+
+.tab--active {
+  color: var(--color-orange);
+}
+
+.btn-about {
+  border-radius: var(--space-2);
+  font-weight: var(--button-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  padding: var(--space-2) var(--space-2);
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  text-decoration: none;
+  display: inline-block;
+  min-width: 110px;
+  text-align: center;
+}
+
+.btn-about:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--color-orange);
+  transform: translateY(-1px);
+}
+.btn-about:active { transform: scale(0.97); }
+.btn-about--active { color: var(--color-orange); }
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+.about-page {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 560px;
+  padding: var(--nav-height) var(--space-6) 0;
+}
+
+.about-intro .title { font-weight: var(--title-weight); font-size: var(--title-size); line-height: var(--title-lh);
+  color: var(--color-body); }
+
+.about-intro__text {
+  margin-bottom: var(--space-3);
+  max-width: 480px;
+  font-weight: var(--body-weight);
+  color: var(--color-body);
+}
+
+.about-intro__text:last-of-type {
+  margin-bottom: var(--space-6);
+}
+.about-contact {
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-5);
+  font-weight: var(--button-weight);
+  color: var(--color-body);
+}
+
+.about-contact__label {
+  font-weight: var(--button-weight);
+  color: var(--color-body);
+  margin-right: var(--space-2);
+}
+
+.accent { color: var(--color-light); font-weight: var(--button-weight); }
+
+.link-accent {
+  color: var(--color-orange);
+  font-weight: var(--button-weight);
+  text-decoration: underline;
+}
+
+.link-accent:hover { opacity: 0.85; }
+
+.btn-outline {
+  display: inline-block;
+  border-radius: var(--space-2);
+  font-weight: var(--button-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  padding: var(--space-2) var(--space-5);
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-outline:hover { 
+  background: rgba(255, 255, 255, 0.10); 
+  transform: translateY(-1px); 
+    color: var(--color-orange);
+
+}
+.btn-outline:active { transform: translateY(0) scale(0.97); }
+
+/* =========================================================
+   SCROLL TO TOP — glass, right side, fades in once you've scrolled
+   ========================================================= */
+.scroll-top {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.25s ease;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover { background: rgba(255, 255, 255, 0.14); }
+
+.scroll-hint.hidden { opacity: 0; pointer-events: none; }
+
+.scroll-hint:hover { background: rgba(255, 255, 255, 0.14); }
+/* Glass ring — blur + border only, no fill. For non-interactive hints. */
+.glass-ring {
+  background: transparent;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* True hole-punch: layer 1 is a solid opaque fill (the whole circle),
+   layer 2 is the icon shape, "exclude" composite makes their overlap
+   transparent — a real see-through cutout, not just a colored line. */
+.scroll-top {
+    border-radius: var(--space-2);
+
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.25s ease;
+  padding: 0;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover { background: rgba(255, 255, 255, 0.14); }
+
+.lightbox__close {
+    border-radius: var(--space-2);
+
+  position: fixed;
+  top: var(--space-6);
+  right: var(--space-6);
+  z-index: 1010;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  transition: background-color 0.25s ease;
+  padding: 0;
+}
+
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.14); }
+/* =========================================================
+   HERO INTRO — normal document flow now (NOT inside .left-col),
+   so it scrolls away like ordinary content instead of sticking.
+   Only .left-col below it is sticky.
+   ========================================================= */
+.hero-intro {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 480px;
+  padding: var(--nav-height) var(--space-6) 0;
+}
+.hero-intro .meta {
+  font-size: var(--body-size);
+  line-height: var(--space-3);
+  color: var(--color-body);
+  margin-bottom: var(--space-2);
+}
+
+.hero-intro .meta-label {
+  font-weight: var(--button-weight);
+  color: var(--color-body);
+  margin-right: var(--space-2);
+}
+.hero-intro__divider {
+  border: none;
+  border-top: 1px solid var(--color-dark-gray);
+  margin: var(--space-3) 0;
+}
+.hero-intro .title   { margin-bottom: var(--space-2); color: var(--color-body); }
+.hero__sub { max-width: 480px; margin-top: var(--space-2); }
+
+/* =========================================================
+   MAIN STAGE — 33 / 67 grid
+   ========================================================= */
+.stage {
+  display: grid;
+  grid-template-columns: 28% 72%;
+  align-items: stretch;
+}
+
+/* Column 1 wrapper: hero-intro (normal flow, scrolls away) stacked
+   above .left-col (sticky). This is what makes them behave
+   differently — only .left-col is pinned. */
+.left-wrap { min-width: 0; border-right: 1px solid var(--color-dark-gray); }
+
+/* ---- Left column: sticky viewport ----
+   top/height are offset by --nav-height so the sticky column
+   settles just below the fixed nav instead of underneath it. */
+.left-col {
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-6);
+  overflow: visible; /* passed blocks peek above the stack — don't clip them */
+}
+
+.text-stack {
+  position: relative;
+  width: 100%;
+  display: grid;
+  min-height: 220px;
+  position: relative;
+  width: 100%;
+  display: grid;
+  min-height: 220px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+
+.text-stack.visible { opacity: 1; }
+
+/* Each block occupies the exact same space, stacked on top of one another.
+   Opacity, transform and z-index are set inline by script.js per scroll
+   position — this just handles the shared "card" look and the easing.
+   No border — a soft shadow on the active card carries the depth cue
+   instead of a hard outline. */
+.text-block {
+  grid-column: 1;
+  grid-row: 1;
+  border-radius: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-dark-gray);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.text-block .caption { margin: 0; }
+.text-block.passed .caption,
+.text-block.passed .h1,
+.text-block.passed .body {
+  opacity: .35 !important;
+}
+
+/* Next Project — sits outside the card stack, bottom-right of the
+   left column. Hidden until script.js adds .visible (once Result
+   is the active card). align-self: flex-end both shrinks it to its
+   own content width AND right-aligns it — .left-col's default
+   stretch behavior is what was making it full-width before. */
+.next-project {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.next-project.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.next-project__link {
+  border-radius: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.next-project__link:hover {
+  background: rgba(255, 255, 255, 0.10);
+  transform: translateY(-1px);
+}
+
+.next-project__link:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.next-project__eyebrow {
+  font-weight: var(--body-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  transition: color 0.2s ease;
+}
+
+.next-project__divider {
+  color: var(--color-dark-gray);
+  margin: 0 var(--space-2);
+}
+
+.next-project__name {
+  font-weight: var(--button-weight);
+  font-size: var(--button-size);
+  line-height: var(--button-lh);
+  color: var(--color-light);
+  transition: color 0.2s ease;
+}
+
+.next-project__link:hover .next-project__eyebrow,
+.next-project__link:hover .next-project__name {
+  color: var(--color-orange);
+}
+
+/* Active block: fully opaque, front of the stack, the only one interactive */
+.text-block.active {
+  pointer-events: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Passed blocks: still present, dimmed, peeking out above the active card —
+   clickable to jump back to that part of the gallery. */
+.text-block.passed {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.text-block.passed:hover,
+.text-block.passed:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+/* ---- Right column: normal document flow, drives the scroll.
+   padding-top clears the fixed nav — this is the only thing now
+   holding the first image down, no more hero pushing it. ---- */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+padding: var(--space-6) var(--space-6) var(--space-6);}
+
+.stage-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-0) 0;
+}
+.stage-group:first-child { 
+  padding-top: 0; 
+}
+
+.gallery-img {
+  width: 87%;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.4s ease;
+}
+.gallery-img,
+.gallery-video {
+  width: 87%;
+  opacity: 0;
+  transform: translateY(24px);
+    border-radius: var(--space-2);
+
+}
+
+.gallery-video.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-img:hover { filter: brightness(1.05); }
+
+.gallery-img.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  padding: 0 0 var(--space-6);
+  text-align: center;
+}
+
+/* =========================================================
+   LIGHTBOX — full-window image popup with click-to-zoom
+   ========================================================= */
+.gallery-img { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 22, 22, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.lightbox__stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto; /* lets you scroll/pan around once zoomed in */
+  padding: var(--space-8) var(--space-6);
+}
+
+.lightbox__stage img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--space-2);
+  cursor: zoom-in;
+  transition: transform 0.35s ease;
+  transform: scale(1);
+}
+
+.lightbox__stage img.zoomed {
+  max-width: none;
+  max-height: none;
+  width: 190%;
+  height: auto;
+  cursor: zoom-out;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: var(--space-6);
+  right: var(--space-6);
+  z-index: 1010;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  transition: background-color 0.25s ease;
+}
+
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.14); }
+
+.lightbox__hint {
+  border-radius: var(--space-2);
+  position: fixed;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1010;
+  padding: var(--space-2) var(--space-4);
+  font-style: normal;
+  color: var(--color-body);
+  pointer-events: none;
+}
+/* =========================================================
+   404 PAGE — same pattern as About, centered instead of left-aligned
+   ========================================================= */
+.error-page {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--nav-height) var(--space-6) 0;
+}
+
+.error-page .caption {
+  margin-bottom: var(--space-3); 
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+}
+
+.error-page .title { 
+  margin-bottom: var(--space-4); 
+  color: var(--color-body); 
+}
+
+.error-page__message {
+  max-width: 420px;
+  margin-bottom: var(--space-6);
+}
+
+@view-transition {
+  navigation: auto;
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+  animation-duration: 0.4s;
+}
+}
+
+/* =========================================================
+   RESPONSIVE — mobile: drop sticky stacking, read top to bottom
+   ========================================================= */
+@media (max-width: 860px) {
+  .stage { grid-template-columns: 1fr; }
+
+  /* These wrappers exist purely for the desktop sticky trick — on mobile
+     they "disappear" from layout so their children can be reordered and
+     interleaved directly against the gallery sections below. */
+  .left-wrap,
+  .left-col,
+  .text-stack,
+  .right-col {
+    display: contents;
+  }
+.about-page {
+  justify-content: flex-start;
+  padding-top: calc(var(--nav-height) + var(--space-6));
+}
+  .hero-intro { order: 1; min-height: 0; padding: calc(var(--nav-height) + var(--space-4)) var(--space-6) var(--space-4); }
+
+.stage-group { display: contents; }
+.next-project {
+  justify-self: center;
+}
+.gallery-img,
+.gallery-video {
+  width: calc(100% - (var(--space-4) * 2));
+  margin: 0 var(--space-4) var(--space-5);
+}
+.stage-group[data-stage="0"] .gallery-img:first-child { order: 2; margin-top: 0; }
+.text-block[data-index="0"] { order: 3; }
+.stage-group[data-stage="0"] .gallery-img:not(:first-child) { order: 4; }
+.text-block[data-index="1"] { order: 5; }
+.stage-group[data-stage="1"] .gallery-img { order: 6; }
+.text-block[data-index="2"] { order: 7; }
+.stage-group[data-stage="2"] .gallery-img,.gallery-video { order: 8; }
+.next-project { order: 9; padding: 0 var(--space-6) var(--space-6); }
+ .topbar {
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+}
+.lightbox__hint {
+  display: none;
+}
+.text-block.passed {
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+} .text-block.passed .caption,
+.text-block.passed .h1,
+.text-block.passed .body {
+  opacity: 1 !important;
+}
+.text-block {
+  grid-column: auto;
+  grid-row: auto;
+  position: relative;
+  inset: auto;
+  opacity: 1 !important;
+  transform: none !important;
+  padding: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-6);
+  border: none;
+  border-top: 1px solid var(--color-dark-gray);
+}
+
+  .text-block.active,
+  .text-block.passed { background-color: transparent; border-top: 1px solid var(--color-dark-gray); }
+
+ .tabgroup__label, .btn-about, .tabgroup__label { padding-left: var(--space-3); padding-right: var(--space-3); }
+  .tabgroup__row {
+    grid-template-columns: 1fr;
+  }
+.tabgroup__collapse {
+  width: 208px;
+}
+
+ .tab {
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+}
+
+  .tab:last-child {
+    border-bottom: none;
+  }
+.tabgroup__label,
+.btn-about {
+  min-width: var(--space-8);
+  text-align: center;
+}}
