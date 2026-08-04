@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Wave — arevalo.design</title>
+
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta property="og:title" content="80s New Wave — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Punk-inspired visual identity featuring high-impact CMYK palettes and custom typography."
+    />
+    <meta property="og:url" content="https://arevalo.design/newwave.html" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/prefrontvinyl.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+  </head>
+  <body>
+    <!-- ===== Top navigation ===== -->
+    <nav class="topbar">
+      <div class="tabgroup">
+        <button
+          class="glass-dark tabgroup__label"
+          id="tabToggle"
+          type="button"
+          aria-expanded="false"
+        >
+          Projects
+        </button>
+
+        <div class="tabgroup__collapse collapsed" id="tabCollapse">
+          <div class="glass tabgroup__row">
+            <a class="tab" href="index.html">Rollout</a>
+            <a class="tab" href="badlands.html">Badlands</a>
+            <a class="tab tab--active" href="newwave.html">Newwave</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="glass-dark btn-about" href="about.html">About</a>
+    </nav>
+
+    <!-- ===== Scroll to top ===== -->
+    <button
+      class="glass scroll-top"
+      id="scrollTopBtn"
+      type="button"
+      aria-label="Scroll to top"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 19V5M12 5L5 12M12 5L19 12"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true"></div>
+
+    <!-- ===== Main stage: 33 / 67 grid ===== -->
+    <main class="stage">
+      <div class="left-wrap">
+        <div class="hero-intro">
+          <h1 class="title">New Wave</h1>
+          <p class="meta">
+            <span class="meta-label">Role</span> Brand Identity Designer
+          </p>
+          <p class="meta">
+            <span class="meta-label">Timeline</span> Semester Long
+          </p>
+          <hr class="hero-intro__divider" />
+          <p class="body hero__sub">
+            A conceptual vinyl package inspired by the 1980s New Wave movement,
+            built around a fictional band and its visual identity.
+          </p>
+        </div>
+
+        <div class="left-col">
+          <div class="text-stack">
+            <article class="text-block active" data-index="0">
+              <h2 class="h1">Problem</h2>
+              <hr class="hero-intro__divider" />
+              <p class="body">
+                The challenge was capturing the look and spirit of New Wave
+                without relying on nostalgia or copying existing album covers.
+              </p>
+            </article>
+
+            <article class="text-block" data-index="1">
+              <h2 class="h1">Solution</h2>
+              <hr class="hero-intro__divider" />
+              <p class="body">
+                I built the identity around the band's lead singer, using bold
+                color, leopard textures, and metallic details to blend pop
+                glamour with punk attitude.
+              </p>
+            </article>
+
+            <article class="text-block" data-index="2">
+              <h2 class="h1">Result</h2>
+              <hr class="hero-intro__divider" />
+              <p class="body">
+                The final package combines storytelling and branding into a
+                cohesive identity, giving the fictional band a memorable and
+                authentic presence.
+              </p>
+            </article>
+          </div>
+
+          <div class="next-project" id="nextProject">
+            <a class="glass next-project__link" href="index.html">
+              <span class="next-project__eyebrow">Next Project</span>
+              <span class="next-project__divider">|</span>
+              <span class="next-project__name">Rollout</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <section class="stage-group" data-stage="0">
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/front.webp"
+            alt="front-vinyl-cover"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/back.webp"
+            alt="back-vinyl-cover"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/inside.webp"
+            alt="inside-vinyl-cover"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/cassette.webp"
+            alt="cassette-tape"
+          />
+        </section>
+
+        <section class="stage-group" data-stage="1">
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/vip.webp"
+            alt="vip-pass"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/poster.webp"
+            alt="poster"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/ticket.webp"
+            alt="ticket"
+          />
+        </section>
+
+        <section class="stage-group" data-stage="2">
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/shirt1.webp"
+            alt="shirt-1"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/shirt2.webp"
+            alt="shirt-2"
+          />
+          <img
+            class="gallery-img reveal"
+            src="assets/newwave/zine.webp"
+            alt="zine"
+          />
+        </section>
+      </div>
+    </main>
+
+    <!-- ===== Image lightbox ===== -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button
+        class="glass lightbox__close"
+        id="lightboxClose"
+        type="button"
+        aria-label="Close"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 5L19 19M19 5L5 19"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <p class="glass lightbox__hint">Click image to zoom</p>
+      <div class="lightbox__stage" id="lightboxStage">
+        <img id="lightboxImg" src="" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — arevalo.design</title>
+
+    <meta name="robots" content="noindex" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+  </head>
+  <body>
+    <!-- ===== Top navigation — same tab system as every other page ===== -->
+    <nav class="topbar">
+      <div class="tabgroup">
+        <button
+          class="glass-dark tabgroup__label"
+          id="tabToggle"
+          type="button"
+          aria-expanded="false"
+        >
+          Projects
+        </button>
+
+        <div class="tabgroup__collapse collapsed" id="tabCollapse">
+          <div class="glass tabgroup__row">
+            <a class="tab" href="index.html">Rollout</a>
+            <a class="tab" href="badlands.html">Badlands</a>
+            <a class="tab" href="newwave.html">Newwave</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="glass-dark btn-about" href="about.html">About</a>
+    </nav>
+
+    <!-- ===== 404 content ===== -->
+    <main class="error-page">
+      <h1 class="title">Page not found</h1>
+      <p class="body error-page__message">
+        The page you're looking for doesn't exist, or it's moved somewhere else.
+      </p>
+
+      <a href="index.html" class="glass btn-outline">Return Home</a>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

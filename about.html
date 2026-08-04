@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="page-about">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Eribert Arevalo</title>
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <meta property="og:title" content="About — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Graphic designer Eribert Arevalo's portfolio website, showcasing his work in visual identity, branding, and typography."
+    />
+    <meta property="og:url" content="https://arevalo.design/about.html" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/prefrontmag.jpg"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+  </head>
+  <body>
+    <!-- ===== Top navigation — same tab system as index.html.
+         No project tab is active here; About is. ===== -->
+    <nav class="topbar">
+      <div class="tabgroup">
+        <button
+          class="glass-dark tabgroup__label"
+          id="tabToggle"
+          type="button"
+          aria-expanded="false"
+        >
+          Projects
+        </button>
+
+        <div class="tabgroup__collapse collapsed" id="tabCollapse">
+          <div class="glass tabgroup__row">
+            <a class="tab" href="index.html">Rollout</a>
+            <a class="tab" href="badlands.html">Badlands</a>
+            <a class="tab" href="newwave.html">Newwave</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="glass btn-about btn-about--active" href="about.html">About</a>
+    </nav>
+
+    <!-- ===== About content ===== -->
+    <main class="about-page">
+      <section class="about-intro">
+        <h1 class="title">Hello!</h1>
+
+        <p class="body about-intro__text">
+          I'm <span class="accent">Eribert Arevalo</span>, a graphic designer
+          based in Las Vegas. I create branding, print, and digital experiences,
+          with growing experience in UX/UI and front-end web development.
+        </p>
+        <p class="body about-intro__text">
+          When I'm not designing, you'll usually find me painting. It helps me
+          stay creative and keeps my eye sharp for color and composition. I'm
+          currently pursuing a B.S. in Graphic Design & Media at UNLV and expect
+          to graduate in Spring 2027.
+        </p>
+        <p class="body about-intro__text">
+          I'm currently looking for a full time position in graphic design or a
+          related field, and always open to new opportunities.
+        </p>
+
+        <p class="body about-contact">
+          <span class="about-contact__label">Contact:</span>
+          <a href="mailto:eribert.arevalo@gmail.com" class="link-accent"
+            >eribert.arevalo@gmail.com</a
+          >
+        </p>
+
+        <a href="assets/resume/resume.pdf" class="glass btn-outline" download
+          >Download Resume</a
+        >
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
