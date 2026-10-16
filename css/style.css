@@ -1,0 +1,901 @@
+/* =========================================================
+   arevalo.design — global styles
+   ========================================================= */
+:root {
+  /* Colors */
+  --color-paper:    #F4F1EE;
+  --color-ink:      #1C1822;
+  --color-hairline: #E0DBDD;
+  --color-eggplant: #3A2C46;
+  --color-slate:    #6E6673;
+  --color-fuchsia:  #D6407E;
+
+  --line: 1px solid var(--color-slate);
+
+  /* Typography */
+  --font-display: 'Cal Sans', system-ui, sans-serif;
+  --font-text:    'Roboto Slab', system-ui, serif;
+
+  --title-weight: 400;  --title-size: 36px;                     --title-lh: 1.05; --title-ls: -0.02em;
+  --h1-weight:    400;  --h1-size: 22.5px;                      --h1-lh: 1;       --h1-ls: 0.02em;
+  --h2-weight:    900;  --h2-size: 14px;                        --h2-lh: 1.2;     --h2-ls: -0.0em;
+  --body-weight:  400;  --body-size: 14px;                      --body-lh: 1.4;   --body-ls: -0.0em;
+  --thin-weight:200;  --thin-size: 12px;                    --thin-lh: 1.4; --thin-ls: 0;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-8: 96px;
+  --space-12: 240px;
+
+  /* Layout */
+--frame-pad: 6vw; /* Increased from var(--space-8). Try 15vw, 20vw, or 250px */
+  --card-gap:  var(--space-4);
+  --hero-h:    200px;
+}
+
+@font-face { font-family:'Cal Sans';  src:url('../assets/fonts/cal-sans-v2-latin-regular.woff2')    format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Roboto Slab'; src:url('../assets/fonts/roboto-slab-v36-latin-900.woff2')  format('woff2'); font-weight:900; font-style:normal; font-display:swap; }
+@font-face { font-family:'Roboto Slab'; src:url('../assets/fonts/roboto-slab-v36-latin-600.woff2')   format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Roboto Slab'; src:url('../assets/fonts/roboto-slab-v36-latin-regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Roboto Slab'; src:url('../assets/fonts/roboto-slab-v36-latin-200.woff2') format('woff2'); font-weight:200; font-style:normal; font-display:swap; }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-y: scroll; scrollbar-gutter: stable; }
+body {
+  min-height: 100vh; background: var(--color-paper); color: var(--color-ink);
+  font-family: var(--font-text); font-weight: var(--body-weight);
+  font-size: var(--body-size); line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+img { display:block; max-width:100%; height:auto; }
+a { color:inherit; text-decoration:none; }
+a:focus-visible { outline:2px solid var(--color-fuchsia); outline-offset:3px; }
+
+.title  { font-family:var(--font-display); font-weight:var(--title-weight);  font-size:var(--title-size);  line-height:var(--title-lh);  letter-spacing:var(--title-ls); }
+.h1     { font-family:var(--font-display); font-weight:var(--h1-weight);     font-size:var(--h1-size);     line-height:var(--h1-lh);     letter-spacing:var(--h1-ls); }
+.h2     { font-family:var(--font-text);    font-weight:var(--h2-weight);     font-size:var(--h2-size);     line-height:var(--h2-lh);     letter-spacing:var(--h2-ls); }
+.thin { font-family:var(--font-text);    font-weight:var(--thin-weight); font-size:var(--thin-size); line-height:var(--thin-lh); letter-spacing:var(--thin-ls); font-style:normal; }
+
+/* --- MASTER LAYOUT --- */
+.sheet { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
+.frame {
+  display: grid; 
+  flex-grow: 1;
+  grid-template-columns: var(--frame-pad) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--frame-pad);
+  grid-template-rows: var(--hero-h) auto auto 1fr; /* First value locks to 700px */
+  border-top: var(--line); border-bottom: var(--line);
+}
+.frame > * { background: var(--color-paper); }
+
+/* --- EXPLICIT BORDERS --- */
+.border-b { border-bottom: var(--line); }
+.border-r { border-right: var(--line); }
+.border-l { border-left: var(--line); }
+
+/* --- HERO SECTION --- */
+.hero { display: flex; justify-content: space-between; align-items: flex-start; }
+.hero-nav { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-3); }
+.hero-nav a {
+  display: inline-block;
+  width: fit-content;            /* keep — stops full-row stretch */
+  padding: var(--space-2) var(--space-3);
+  margin: calc(var(--space-1) * -1) calc(var(--space-3) * -1);
+  text-transform: uppercase; 
+}
+
+.hero-nav a:hover, .hero-nav a:focus-visible, .hero-nav a[aria-current="page"] { color: var(--color-fuchsia); }
+.hero-title { text-align: right; padding: var(--space-4) var(--space-3); }
+
+/* --- CARDS & IMAGES --- */
+.card { 
+  display: grid; 
+  grid-template-rows: subgrid; 
+  position: relative; 
+  text-decoration: none;
+  min-width: 0; /* Forces CSS Grid to respect column width */
+
+  --hover-thickness: 2px; 
+}
+
+/* Corner crop-marks (reticle) drawn on hover — four L brackets */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  --l: 20px; --t: 5px; --i: 10px; --c: var(--color-fuchsia);
+  background:
+    linear-gradient(var(--c), var(--c)) left  var(--i) top    var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c), var(--c)) left  var(--i) top    var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c), var(--c)) right var(--i) top    var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c), var(--c)) right var(--i) top    var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c), var(--c)) left  var(--i) bottom var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c), var(--c)) left  var(--i) bottom var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c), var(--c)) right var(--i) bottom var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c), var(--c)) right var(--i) bottom var(--i) / var(--t) var(--l);
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.card:hover::after, .card:focus-visible::after {
+  opacity: 1;
+}
+
+.card__media { 
+  height: 60vh; /* Always takes up 60% of the screen height */
+  width: 100%; 
+  position: relative; 
+  overflow: hidden; 
+}
+
+.card__media img { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* Ensures the image crops beautifully inside the tall box */
+}
+.card__index { color: var(--color-slate); }
+/* --- ALIGNMENT & BACKGROUND --- */
+.card__label {
+  border-top: var(--line);
+  display: flex; 
+  align-items: flex-start; /* Forces both text blocks to bottom-align */
+  justify-content: space-between;
+  padding: var(--space-3); 
+  background: var(--color-hairline);
+  min-width: 0; /* Stops the flexbox from forcing the grid to expand */
+  gap: var(--space-2);
+}
+
+.card__name {
+  min-width: 0;
+  /* remove line-height: 0.85 and margin-bottom: -0.05em */
+}
+
+.card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* was flex-end — you want name/role left-aligned */
+  gap: var(--space-1);       /* the space between name and role — tweak this */
+  white-space: nowrap;
+}
+
+.card__role, .card__time { 
+  line-height: 1;
+  color: var(--color-slate);
+ }
+.footer {
+  font-weight: var(--thin-weight);
+  font-size: var(--thin-size);
+  line-height: var(--body-lh);
+  grid-column: 2 / 7; 
+  background-color: var(--color-paper);
+  position: relative;
+  z-index: 20; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4); 
+  color: var(--color-slate);
+}
+/* =========================================================
+   SITE HEADER — shared by every page. Sticky; hides on scroll down,
+   returns on scroll up and at the top (JS toggles .is-hidden).
+   Height = the nav's natural height, same as the gallery's old hero.
+   ========================================================= */
+.site-header {
+  position: sticky; top: 0; z-index: 60;
+  display: grid;
+  grid-template-columns: var(--frame-pad) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--frame-pad);
+  background: var(--color-paper);
+  border-top: var(--line); border-bottom: var(--line);
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1), background-color .3s ease, border-color .3s ease;
+}
+.site-header.is-hidden { transform: translateY(-101%); }
+.site-header > .cell:first-child { grid-column: 1; }
+.site-header > .hero { grid-column: 2 / 7; }
+.site-header > .cell:last-child { grid-column: 7; }
+
+/* the header replaces row 1 of every frame, so collapse that row and drop the doubled top line */
+.site-header + .frame, .site-header + .g-frame { border-top: 0; }
+.site-header + .frame { grid-template-rows: 0 auto auto 1fr; }
+.site-header + .proj-frame { grid-template-rows: 0 auto auto auto; }
+
+
+@media (max-width: 760px) {
+  .site-header { display: block; border-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+}
+/* =========================================================
+   KEYBOARD FOCUS — fuchsia, no box
+   Text controls turn fuchsia (same as hover); picture tiles keep their
+   fuchsia corner brackets; plain images get a thin fuchsia outline.
+   ========================================================= */
+.hero-nav a:focus-visible,
+.theme-switch:focus-visible,
+.about__link:focus-visible,
+.about__resume:focus-visible,
+.proj-next:focus-visible,
+.acc-head:focus-visible,
+.lightbox button:focus-visible { outline: none; color: var(--color-fuchsia); }
+
+.acc-head:focus-visible { opacity: 1; }
+.card:focus-visible,
+.g-item:focus-visible { outline: none; }          /* the corner brackets already show focus */
+
+.shot img:focus-visible,
+.lightbox--shot .lightbox__media img:focus-visible { outline: 2px solid var(--color-fuchsia); outline-offset: -2px; }
+
+
+/* =========================================================
+   PROJECT PAGES — ARTICLE LAYOUT.
+   REPLACE the whole "===== PROJECT PAGE =====" block (from that comment through
+   its @media (prefers-reduced-motion) block) with this. Rows: hero / double / text / triple.
+   ========================================================= */
+.art-frame { display: flex; flex-direction: column; }
+.row { display: grid; border-bottom: var(--line); }
+.row > * { background: var(--color-paper); min-width: 0; }
+.row--hero, .row--triple { grid-template-columns: var(--frame-pad) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--frame-pad); }
+.row--double { grid-template-columns: var(--frame-pad) minmax(0, 1fr) var(--card-gap) minmax(0, 1fr) var(--frame-pad); }
+.row--text   { grid-template-columns: var(--frame-pad) minmax(0, 1fr) var(--frame-pad); }
+.row--hero > .shot { grid-column: span 3; }
+.row--text > .footer { grid-column: 2; }
+
+/* text blocks */
+.art-text { padding: var(--space-5) var(--space-4); }
+.art-text--hero { display: flex; flex-direction: column; justify-content: center; padding-left: var(--space-3); }
+.art-meta { display: flex; flex-direction: column; gap: var(--space-2); }
+.art-meta .title { margin-bottom: var(--space-3); }
+.art-meta__list { display: grid; grid-template-columns: max-content 1fr; column-gap: var(--space-4); row-gap: var(--space-2); }
+.art-meta__list dd { margin: 0; }
+.art-text--center { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4); text-align: left; }
+.art-text--center > * { width: min(100%, 60ch); }
+.art-text--center .h2 { margin-bottom: var(--space-2); }
+.art-text--center .body { margin: 0; }
+
+/* figures: same shape across a row so heights always match (pictures cropped to fit; the popup shows them whole) */
+.shot { margin: 0; display: flex; flex-direction: column; }
+.shot img, .shot__media { flex: none; }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; background: var(--color-hairline); cursor: zoom-in; }
+.row--hero .shot img { aspect-ratio: 4 / 3; }
+.shot__media { position: relative; }
+.shot__media video { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; background: var(--color-hairline); }
+.shot__cap { font-weight: var(--thin-weight); font-size: var(--thin-size); padding: var(--space-2) var(--space-3); background: var(--color-hairline); color: var(--color-ink); text-align: center; border-top: var(--line); flex: 1 1 auto; display: flex; align-items: center; justify-content: center;}
+
+/* lazy load: figure fades, picture lifts inside its frame (row lines never move) */
+html.js .row .shot.reveal { opacity: 0; overflow: hidden; transition: opacity .7s ease, background-color .3s ease, color .3s ease, border-color .3s ease; }
+html.js .row .shot.reveal img { transform: translate3d(0, 24px, 0); transition: transform .7s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+html.js .row .shot.reveal.in-view { opacity: 1; }
+html.js .row .shot.reveal.in-view img { transform: translate3d(0, 0, 0); }
+
+/* next project band */
+.proj-next { display: flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-6) var(--space-4); }
+.proj-next__name { font-family: var(--font-display); font-weight: var(--h1-weight); font-size: var(--h1-size); line-height: 1; letter-spacing: var(--h1-ls); }
+.proj-next:hover, .proj-next:focus-visible { color: var(--color-fuchsia); }
+.row--triple:has(> .art-text) .shot img { flex: 1 1 auto; min-height: 0; }
+.row--triple:has(> .art-text) .shot__cap { flex: none; }
+.row--triple > .art-text--center { align-items: flex-start; }
+
+/* mobile: one column, a line under every section, text before its images */
+@media (max-width: 760px) {
+  .row { display: flex; flex-direction: column; border-bottom: 0; }
+  .row > :not(.cell) { border-bottom: var(--line); }
+  .row--triple > .art-text { order: -1; }
+  /* text blocks on mobile: roomy top/bottom; the BLOCK is centred, the text inside is left-aligned */
+  .art-text, .art-text--hero, .art-text--center { padding: var(--space-6) var(--space-4); }
+  .art-text--hero { align-items: center; gap: var(--space-5); }
+  .art-meta { width: fit-content; max-width: 100%; }
+  .art-text--center, .row--triple > .art-text--center {
+    display: grid; grid-template-columns: minmax(0, 60ch);
+    justify-content: center; align-content: center; text-align: left;
+  }
+  .art-text--center > * { width: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .row .shot.reveal { opacity: 1; transition: none; }
+  html.js .row .shot.reveal img { transform: none; transition: none; }
+}
+.shot--video video { cursor: pointer; }
+.shot__play {
+  position: absolute; right: var(--space-3); bottom: var(--space-3); z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-paper); color: var(--color-ink);
+  border: var(--line); cursor: pointer; text-transform: uppercase;
+}
+.shot__play:hover, .shot__play:focus-visible { color: var(--color-fuchsia); outline: none; }
+/* =========================================================
+   PROJECT LIGHTBOX — the popup box takes the shape of the picture and is
+   limited to the window, so it never leaves empty space and never crops.
+   Reuses the gallery .lightbox shell; scoped to .lightbox--shot.
+   ========================================================= */
+.shot img { cursor: zoom-in; }
+.shot--video video { cursor: pointer; }
+
+.lightbox--shot { padding: var(--space-4); }
+.lightbox--shot .lightbox__panel {
+  display: flex; flex-direction: column;
+  width: auto; height: auto; aspect-ratio: auto; max-width: none; max-height: none;
+  overflow: hidden;
+  border: var(--line);
+}
+
+/* THE BOX — width/height are set by the script from the picture's own shape (and
+   re-fitted whenever the window or browser zoom changes), so it always hugs the
+   image or video. cover = no gaps; the shape already matches, so nothing is cut. */
+.lightbox--shot .lightbox__media {
+  position: relative; overflow: hidden;
+  background: transparent;
+  border-right: 0; border-bottom: var(--line);
+}
+.lightbox--shot .lightbox__media.is-zoomed { overflow: auto; scrollbar-width: thin; }
+.lightbox--shot .lightbox__media img {
+  display: block; width: 100%; height: 100%; max-width: none; max-height: none;
+  object-fit: cover; cursor: zoom-in;
+  transition: opacity .25s ease;
+}
+.lightbox--shot .lightbox__media img[hidden] { display: none; }
+.lightbox--shot .lightbox__media img.zoomed { width: 190%; height: auto; object-fit: contain; cursor: zoom-out; }
+
+.lightbox__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.lightbox__video[hidden], .lightbox__play[hidden] { display: none; }
+.lightbox__play {
+  position: absolute; right: var(--space-3); bottom: var(--space-3); z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-paper); color: var(--color-ink);
+  border: var(--line); cursor: pointer; text-transform: uppercase;
+}
+.lightbox__play:hover, .lightbox__play:focus-visible { color: var(--color-fuchsia); outline: none; }
+
+/* bottom bar — caption centred, controls right (left cell is an empty spacer) */
+.lightbox__bar {
+  display: grid; grid-template-columns: 1fr minmax(0, auto) 1fr; align-items: center; column-gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+  background: var(--color-paper);
+}
+.lightbox__count { justify-self: start; color: var(--color-slate); }
+.lightbox__cap   { text-align: center; color: var(--color-slate); text-wrap: balance; }
+.lightbox__ctrl  { justify-self: end; display: flex; align-items: center; gap: var(--space-1); }
+
+/* controls: slate, fuchsia on hover — same as the gallery; big invisible hit area */
+.lightbox--shot .lightbox__prev,
+.lightbox--shot .lightbox__next,
+.lightbox--shot .lightbox__close {
+  position: static; display: inline-block;
+  --hit-y: var(--space-3); --hit-x: var(--space-3);
+  padding: var(--hit-y) var(--hit-x);
+  margin: calc(var(--space-1) - var(--hit-y)) calc(var(--space-2) - var(--hit-x));
+  color: var(--color-slate);
+}
+.lightbox--shot .lightbox__prev:hover, .lightbox--shot .lightbox__prev:focus-visible,
+.lightbox--shot .lightbox__next:hover, .lightbox--shot .lightbox__next:focus-visible,
+.lightbox--shot .lightbox__close:hover, .lightbox--shot .lightbox__close:focus-visible { color: var(--color-fuchsia); }
+
+@media (max-width: 760px) {
+  .lightbox--shot { padding: var(--space-2); }
+  .lightbox__bar { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "cap ctrl"; column-gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3); }
+  .lightbox__cap   { grid-area: cap; text-align: center; }
+  .lightbox__count { display: none; }
+  .lightbox__ctrl  { grid-area: ctrl; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox--shot .lightbox__media img { transition: none; }
+}
+/* --- TABLET STACK (1000px) --- */
+@media (max-width: 900px) {
+  .card__label { 
+    flex-direction: column; 
+    align-items: flex-start; /* Aligns text to the left */
+  }
+  .card__meta {
+    align-items: flex-start;
+    text-align: left;
+    white-space: normal;   /* lets role text wrap instead of blowing out the grid */
+  }
+}
+@media (max-width: 760px) {
+  .sheet { padding: 0; min-height: auto; }
+  
+  .frame { 
+    display: flex; 
+    flex-direction: column; 
+    border: none; 
+    position: relative;
+  }
+  
+  /* Full-bleed: no side rails on mobile */
+  .frame::before, .frame::after { display: none; }
+
+  /* 2. Hide unused elements */
+  .cell, .hero-title { display: none !important; }
+
+/* Mobile Sticky Horizontal Nav */
+/* Mobile Sticky Horizontal Nav */
+.hero {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-paper);
+  align-items: center;
+}
+
+.hero-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  flex: 0 1 auto; min-width: 0;
+  box-sizing: border-box;
+}
+
+.hero-nav a { 
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  margin: 0; padding: var(--space-1) 0;
+}
+
+.hero-nav a[aria-current="page"],
+.hero-nav a:hover {
+  color: var(--color-fuchsia);
+}
+  /* 4. Card Stacking & Gaps */
+  .card { 
+    display: flex; flex-direction: column; 
+  }
+  .card-1 { 
+    margin-top: 0; /* Forces the first card to sit flush exactly under the Nav */
+  }
+  .card::after { display: none; }
+
+  /* Full-bleed cover, edge to edge (no divider) */
+  .card__media {
+    height: auto; aspect-ratio: 1 / 1;
+    padding: 0;
+    background: var(--color-hairline);
+  }
+  
+  .card__media img { position: relative; width: 100%; height: 100%; }
+
+  .card__label {
+    border-top: var(--line);
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: var(--line);
+    background: var(--color-hairline);
+    padding: var(--space-3);
+    gap: var(--space-1);
+  }
+  
+  .card__name { margin-bottom: 0; line-height: 1; }
+  /* Mobile Footer */
+  .footer {
+    margin: 0;
+    background: var(--color-paper);
+    padding: var(--space-6) var(--space-3);
+  }
+}
+
+/* =========================================================
+   MOTION & INTERACTIONS
+   ========================================================= */
+
+/* NAV — blinking caret on the current page only */
+.hero-nav a { position: relative; }
+.hero-nav a[aria-current="page"]::after {
+  content: '_'; margin-left: .12em;
+  animation: caret-blink 1s steps(1, end) infinite;
+}
+@keyframes caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* LAZY LOAD — work cards + gallery tiles: the tile fades in, the picture lifts
+   inside its frame (so the ledger lines never move). --d staggers the columns. */
+html.js .card.reveal, html.js .g-item.reveal {
+  opacity: 0;
+  transition: opacity .7s ease var(--d, 0s), background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+html.js .card.reveal .card__media img,
+html.js .g-item.reveal .g-media img {
+  transform: translate3d(0, 24px, 0);
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0s);
+  will-change: transform;
+}
+html.js .card.reveal.in-view, html.js .g-item.reveal.in-view { opacity: 1; }
+html.js .card.reveal.in-view .card__media img,
+html.js .g-item.reveal.in-view .g-media img { transform: translate3d(0, 0, 0); }
+.card-2 { --d: .12s; }
+.card-6 { --d: .24s; }   /* your third card's class is card-6 */
+/* About portrait — same lazy load: the frame fades in, the photo lifts inside it */
+html.js .about-photo.reveal {
+  opacity: 0;
+  transition: opacity .7s ease, background-color .3s ease, border-color .3s ease;
+}
+html.js .about-photo.reveal img {
+  transform: translate3d(0, 24px, 0);
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+  will-change: transform;
+}
+html.js .about-photo.reveal.in-view { opacity: 1; }
+html.js .about-photo.reveal.in-view img { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .about-photo.reveal { opacity: 1; transition: none; }
+  html.js .about-photo.reveal img { transform: none; transition: none; }
+  html.js .card.reveal, html.js .g-item.reveal { opacity: 1; transition: none; }
+  html.js .card.reveal .card__media img, html.js .g-item.reveal .g-media img { transform: none; transition: none; }
+}
+
+/* =========================================================
+   LIGHT / B&W THEME  — appended. Remaps color tokens only.
+   ========================================================= */
+html.theme-dark {
+  --color-paper:    #1C1822;  /* background  <- ink      */
+  --color-ink:      #E0DBDD;  /* text        <- paper    */
+  --color-hairline: #3A2C46;  /* label fill  <- slate    */
+  --color-slate:    #998ea0;  /* grid lines  <- eggplant */
+  /* --color-fuchsia stays as the accent */
+}
+
+/* Smooth cross-fade on switch (color props only; leaves
+   the wobble/curtain/flash transforms & filters untouched) */
+:where(body, .frame, .frame *, .g-frame, .g-frame *, .lightbox, .lightbox *, .site-header, .art-frame, .art-frame *) {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+
+/* The switch — one button, both options shown, active one in fuchsia.
+   Clicking anywhere on it flips to the opposite theme. Nav-sized. */
+.theme-switch {
+  padding: var(--space-4) var(--space-3);
+  background: none; border: 0; cursor: pointer;
+  color: inherit;                 /* font/size/tracking come from the .h2 class, like the nav */
+  text-transform: uppercase; line-height: 1; white-space: nowrap;
+}
+.theme-switch .opt-light { color: var(--color-fuchsia); }              /* light = active by default */
+html.theme-dark .theme-switch .opt-light { color: inherit; }
+html.theme-dark .theme-switch .opt-dark  { color: var(--color-fuchsia); }
+
+/* Hover / focus previews the option you'd switch to */
+.theme-switch:hover .opt-dark,
+.theme-switch:focus-visible .opt-dark { color: var(--color-fuchsia); }
+html.theme-dark .theme-switch:hover .opt-light,
+html.theme-dark .theme-switch:focus-visible .opt-light { color: var(--color-fuchsia); }
+
+/* Keep the switch reachable next to the mobile nav row */
+@media (max-width: 760px) {
+  .hero { align-items: center; }
+  .hero-nav { flex: 0 1 auto; }
+  .theme-switch { padding: var(--space-3) var(--space-4); white-space: nowrap; }
+}
+
+/* =========================================================
+   GALLERY — 3-up ledger of square tiles (ADDED; nothing above changed).
+   Real borders (like the home grid) so lines never drop out on zoom and
+   positions match home. Rendered from window.GALLERY by js/script.js.
+   ========================================================= */
+.g-frame {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: var(--frame-pad) minmax(0,1fr) var(--card-gap) minmax(0,1fr) var(--card-gap) minmax(0,1fr) var(--frame-pad);
+  border-top: var(--line); border-bottom: var(--line);
+}
+.g-frame > * { background: var(--color-paper); }            /* every cell is paper */
+.g-frame .hero, .g-frame .footer { grid-column: span 5; }   /* sit between the margin cells */
+.g-frame .hero { border-bottom: var(--line); }
+
+/* Hero + footer margin cells get their border by position (no HTML change) */
+.g-frame > .g-cell:first-child { border-right: var(--line); border-bottom: var(--line); }
+.g-frame .hero + .g-cell       { border-left:  var(--line); border-bottom: var(--line); }
+#g-footer-cell                 { border-right: var(--line); }
+.g-frame .footer + .g-cell     { border-left:  var(--line); }
+
+.g-item {
+  position: relative;
+  display: flex; flex-direction: column;
+  font: inherit; color: inherit; text-align: left;
+  border: 0; padding: 0; cursor: pointer;
+  border-bottom: var(--line);          /* row divider under the tile */
+}
+.g-media {
+  position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+  background: var(--color-hairline);
+  border-bottom: var(--line);          /* divider between image and label */
+}
+.g-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* label — title (h1) left, date + number in BODY text */
+.g-label {
+  flex: 1 1 auto;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-2); padding: var(--space-3);
+  background: var(--color-hairline); min-width: 0;
+}
+.g-meta  { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-width: 0; }
+.g-date, .g-index {                    /* full body attributes */
+  font-family: var(--font-text);
+  font-weight: var(--body-weight);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  letter-spacing: var(--body-ls);
+}
+.g-date  { color: var(--color-slate); }
+.g-index { color: var(--color-slate); }
+
+/* hover reticle — identical to the home cards */
+.g-item::after {
+  content: ''; position: absolute; inset: 0; z-index: 10; pointer-events: none;
+  --l: 20px; --t: 5px; --i: 10px; --c: var(--color-fuchsia);
+  background:
+    linear-gradient(var(--c),var(--c)) left  var(--i) top    var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c),var(--c)) left  var(--i) top    var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c),var(--c)) right var(--i) top    var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c),var(--c)) right var(--i) top    var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c),var(--c)) left  var(--i) bottom var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c),var(--c)) left  var(--i) bottom var(--i) / var(--t) var(--l),
+    linear-gradient(var(--c),var(--c)) right var(--i) bottom var(--i) / var(--l) var(--t),
+    linear-gradient(var(--c),var(--c)) right var(--i) bottom var(--i) / var(--t) var(--l);
+  background-repeat: no-repeat; opacity: 0; transition: opacity .18s ease;
+}
+.g-item:hover::after, .g-item:focus-visible::after { opacity: 1; }
+
+/* Mobile: single column, drop the filler cells + reticle */
+@media (max-width: 760px) {
+  .g-frame { display: flex; flex-direction: column; border: none; }
+  .g-frame .g-cell { display: none; }
+  .g-item::after { display: none; }
+}
+
+/* =========================================================
+   ABOUT — portrait (col 2) + bio (col 4-6), same ledger grid.
+   ========================================================= */
+.about-photo { position: relative; overflow: hidden; background: var(--color-paper); min-height: 60vh; }.about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+ 
+.about { display: flex; flex-direction: column; padding: var(--space-5); }
+.about .title { margin-bottom: var(--space-3); }
+.about__bio { max-width: 60ch; margin-bottom: var(--space-4); }
+ 
+.about__contact {
+  display: grid; grid-template-columns: max-content 1fr;
+  column-gap: var(--space-3); row-gap: var(--space-1);
+  margin-top: auto;              /* pushes contact + resume to the bottom of the row */
+  margin-bottom: var(--space-6);
+}
+.about__contact dt { color: var(--color-slate); }
+.about__contact dd { margin: 0; }
+ 
+.about__link { text-decoration: underline; text-underline-offset: 2px; }
+.about__link:hover, .about__link:focus-visible { color: var(--color-fuchsia); }
+ 
+.about__resume { width: fit-content; text-transform: uppercase; }
+.about__resume:hover, .about__resume:focus-visible { color: var(--color-fuchsia); }
+ 
+@media (max-width: 760px) {
+  .about-photo { aspect-ratio: 1 / 1; min-height: 0; }
+  .about { padding: var(--space-4); }
+  .about__bio { margin-bottom: var(--space-6); }
+}
+
+/* =========================================================
+   GALLERY LIGHTBOX — grows from the clicked tile (About-style).
+   Closes on click-outside, Esc, or [Close].
+   ========================================================= */
+html.lb-open { overflow: hidden; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-6);
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox__backdrop {
+  position: absolute; inset: 0;
+  background: color-mix(in srgb, #1C1822 68%, transparent);
+  opacity: 0; transition: opacity .3s ease;
+}
+.lightbox.is-open .lightbox__backdrop { opacity: 1; }
+.lightbox.is-closing .lightbox__backdrop { opacity: 0; }
+
+.lightbox__panel {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* image | text — equal halves, always */
+  height: min(66vh, 42vw);          /* sized off the viewport → stays big when zoomed out */
+  aspect-ratio: 2 / 1;              /* width = 2 x height, so each half is a square */
+  background: var(--color-paper);
+  border: var(--line);
+  overflow: hidden;
+  will-change: transform;
+}
+
+.lightbox.is-closing .lightbox__panel {
+  opacity: 0; transform: scale(.97);
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+.lightbox__media {
+  position: relative;
+  height: 100%;                     /* fills the square left half */
+  background: var(--color-hairline);
+  border-right: var(--line);
+}
+.lightbox__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.lightbox__body { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5) var(--space-5) var(--space-8); overflow: auto; }
+.lightbox__close {
+  position: absolute; top: var(--space-2); right: var(--space-2); z-index: 3;
+  background: none; border: 0; cursor: pointer; text-transform: uppercase;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-slate)
+}
+.lightbox__close:hover, .lightbox__close:focus-visible { color: var(--color-fuchsia); }
+
+/* prev / next — pinned bottom-right of the panel, generous hit areas */
+.lightbox__nav { position: absolute; right: var(--space-2); bottom: var(--space-1); z-index: 2; display: flex; gap: var(--space-2); }
+.lightbox__prev, .lightbox__next { 
+  background: none; 
+  border: 0; cursor: 
+  pointer; padding: 
+  var(--space-2) 
+  var(--space-3);
+  color: var(--color-slate)
+ }
+.lightbox__prev:hover, .lightbox__prev:focus-visible,
+.lightbox__next:hover, .lightbox__next:focus-visible { color: var(--color-fuchsia); }
+.lightbox__index { color: var(--color-slate); }
+.lightbox__title { margin-top: var(--space-3); }
+.lightbox__date { color: var(--color-slate); }
+.lightbox__summary { margin-top: var(--space-3); max-width: 46ch; }
+
+@media (max-width: 760px) {
+  .lightbox { padding: var(--space-4); }
+  .lightbox__panel { grid-template-columns: 1fr; aspect-ratio: auto; height: auto; width: min(460px, 92vw); max-height: 92vh; overflow: auto; }
+  .lightbox__media { aspect-ratio: 1 / 1; height: auto; border-right: 0; border-bottom: var(--line); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__backdrop, .lightbox__panel { transition: none !important; }
+}
+
+/* multi-image items: snap-scrolling stack inside the image half + dot indicator */
+.lightbox__slides { position: absolute; inset: 0; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
+.lightbox__slides::-webkit-scrollbar { display: none; }
+.lightbox__slides img { width: 100%; height: 100%; object-fit: cover; display: block; scroll-snap-align: start; }
+
+.lightbox__dots { position: absolute; right: var(--space-2); top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: var(--space-2); }
+.lightbox__dots[hidden] { display: none; }
+.lightbox__dot {
+  position: relative; width: 8px; height: 8px; padding: 0; border-radius: 50%; cursor: pointer;
+  background: transparent; border: 1px solid var(--color-paper);
+  box-shadow: 0 0 0 1px rgba(28, 24, 34, .35);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.lightbox__dot::before { content: ''; position: absolute; inset: -8px; }   /* bigger invisible hit area */
+.lightbox__dot.is-on { background: var(--color-fuchsia); border-color: var(--color-fuchsia); }
+/* gallery popup: click-to-zoom pane + medium/dimensions line */
+.lightbox__slides img { cursor: zoom-in; }
+.lightbox__zoom { position: absolute; inset: 0; z-index: 3; overflow: auto; background: var(--color-hairline); scrollbar-width: thin; }
+.lightbox__zoom[hidden] { display: none; }
+.lightbox__zoom img { display: block; width: 190%; height: auto; max-width: none; object-fit: contain; cursor: zoom-out; }
+.lightbox__meta { color: var(--color-slate); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.lightbox__meta[hidden] { display: none; }
+
+/* 404 — centred message inside the ledger frame */
+.error-page {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+}
+.error-page__code { color: var(--color-slate); }
+.error-page__message { max-width: 42ch; margin-bottom: var(--space-3); }
+.error-page__link { text-transform: uppercase; }
+.error-page__link:hover, .error-page__link:focus-visible { color: var(--color-fuchsia); }
+/* =========================================================
+   ADD AT THE VERY END of style.css (it overrides earlier rules by order).
+   Also DELETE the earlier block titled "GALLERY POPUP — full height like the
+   project popup; photo-on-top layout kicks in sooner" (and its @media).
+   If you already pasted the previous fixes.css, replace it with this one
+   (the 1px-bleed rules are gone).
+   ========================================================= */
+
+/* ---- 2. lazy load: shorter lift + gentler tail = no end-of-animation jitter ---- */
+html.js .card.reveal .card__media img,
+html.js .g-item.reveal .g-media img {
+  transform: translate3d(0, 16px, 0);
+  transition: transform .6s cubic-bezier(.33, 1, .68, 1) var(--d, 0s);
+  will-change: auto;
+}
+html.js .row .shot.reveal img {
+  transform: translate3d(0, 16px, 0);
+  transition: transform .6s cubic-bezier(.33, 1, .68, 1);
+  will-change: auto;
+}
+html.js .card.reveal.in-view .card__media img,
+html.js .g-item.reveal.in-view .g-media img,
+html.js .row .shot.reveal.in-view img { transform: none; }
+
+/* ---- 4. pretty wrapping everywhere: no widows / orphans ---- */
+p, dd, .body, .thin, .lightbox__summary { text-wrap: pretty; }
+.title, .h1, .h2, .shot__cap, .lightbox__cap { text-wrap: balance; }
+
+/* ---- GALLERY POPUP — vertical: square picture / text / controls (fixed size, no JS resizing) ---- */
+.lightbox--gallery { padding: var(--space-4); }
+.lightbox--gallery .lightbox__panel {
+  display: flex; flex-direction: column;
+  /* as wide as the window allows, but never so wide the stack outgrows the height */
+  width: min(calc(100vw - (var(--space-4) * 2)), calc((100vh - (var(--space-4) * 2)) * .62));
+  height: auto; max-height: calc(100vh - (var(--space-4) * 2));
+  aspect-ratio: auto; overflow: hidden;
+}
+.lightbox--gallery .lightbox__media { background: var(--color-paper); position: relative; flex: none; width: 100%; height: auto; aspect-ratio: 1 / 1; border: 0; }
+.lightbox--gallery .lightbox__slides img.is-contain { object-fit: contain; }   /* opt-in per item: fit: 'contain' */
+.lightbox--gallery .lightbox__body {
+  position: static; flex: 0 1 auto; min-height: 0; gap: var(--space-1);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  border-top: var(--line);
+  overflow: auto;                                /* long summaries scroll inside the text area */
+}
+.lightbox--gallery .lightbox__title { margin: 0; }
+.lightbox--gallery .lightbox__summary { margin-top: var(--space-2); max-width: 70ch; }
+
+.lightbox--gallery .lightbox__bar { flex: none; grid-template-columns: 1fr; border-top: var(--line); padding: var(--space-1) var(--space-2); }
+.lightbox--gallery .lightbox__ctrl { justify-self: end; display: flex; align-items: center; gap: var(--space-1); }
+.lightbox--gallery .lightbox__prev,
+.lightbox--gallery .lightbox__next,
+.lightbox--gallery .lightbox__close {
+  position: static; display: inline-block;
+  --hit-y: var(--space-3); --hit-x: var(--space-3);
+  padding: var(--hit-y) var(--hit-x);
+  margin: calc(var(--space-1) - var(--hit-y)) calc(var(--space-2) - var(--hit-x));
+  color: var(--color-slate);
+}
+.lightbox--gallery .lightbox__prev:hover, .lightbox--gallery .lightbox__prev:focus-visible,
+.lightbox--gallery .lightbox__next:hover, .lightbox--gallery .lightbox__next:focus-visible,
+.lightbox--gallery .lightbox__close:hover, .lightbox--gallery .lightbox__close:focus-visible { color: var(--color-fuchsia); }
+/* gallery popup: date | medium | dimensions on one thin line that wraps instead of cutting off */
+.lightbox--gallery .lightbox__meta {
+  white-space: normal; overflow: visible; text-overflow: clip;
+  text-wrap: pretty;
+}
+@media (max-width: 760px) { .lightbox--gallery { padding: var(--space-2); } }
+/* lazy load: fade only, no transform = no layer snap at the end of the animation */
+html.js .card.reveal .card__media img,
+html.js .g-item.reveal .g-media img,
+html.js .row .shot.reveal img,
+html.js .about-photo.reveal img,
+html.js .card.reveal.in-view .card__media img,
+html.js .g-item.reveal.in-view .g-media img,
+html.js .row .shot.reveal.in-view img,
+html.js .about-photo.reveal.in-view img {
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+/* gallery popup: bigger, even text padding, no leftover compositor layer */
+.lightbox--gallery .lightbox__panel {
+  width: min(calc(100vw - (var(--space-4) * 2)), calc(100vh - 280px), 900px);                    /* fallback */
+  width: round(down, min(calc(100vw - (var(--space-4) * 2)), calc(100vh - 280px), 900px), 1px);  /* whole pixels = no fractional edges */
+  will-change: auto;
+}
+.lightbox--gallery .lightbox__body { padding: var(--space-5); }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link {
+  position: fixed; top: var(--space-2); left: var(--space-2); z-index: 2000;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-paper); color: var(--color-ink);
+  border: var(--line); text-transform: uppercase;
+  transform: translateY(-300%);
+}
+.skip-link:focus, .skip-link:focus-visible { transform: none; color: var(--color-fuchsia); outline: none; }
+main[tabindex="-1"]:focus { outline: none; }

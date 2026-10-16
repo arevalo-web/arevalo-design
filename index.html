@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta
+      name="description"
+      content="Eribert Arevalo — Graphic Designer specializing in visual identity, branding, and typography."
+    />
+    <link rel="canonical" href="https://arevalo.design/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eribert Arevalo — Graphic Designer" />
+    <meta
+      property="og:description"
+      content="Selected work: three brand and visual-design projects."
+    />
+    <meta property="og:url" content="https://arevalo.design/" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/previews/prefrontcd.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="CD cover artwork from the Luv Is Rage 2 album reimagining."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+
+    <script>
+      (function () {
+        var r = document.documentElement;
+        r.classList.add("js");
+        try {
+          if (localStorage.getItem("theme") === "dark")
+            r.classList.add("theme-dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link h2" href="#main">[Skip to content]</a>
+    <div class="sheet">
+      <header class="site-header">
+        <div class="cell border-r"></div>
+        <div class="hero">
+          <nav class="hero-nav" aria-label="Primary">
+            <a class="h2" href="/" aria-current="page">[Work]</a>
+            <a class="h2" href="/gallery/">[Gallery]</a>
+            <a class="h2" href="/about/">[About]</a>
+          </nav>
+          <button
+            class="theme-switch h2"
+            type="button"
+            aria-pressed="false"
+            aria-label="Switch to dark mode"
+          >
+            [<span class="opt opt-light">Light</span> /
+            <span class="opt opt-dark">Dark</span>]
+          </button>
+        </div>
+        <div class="cell border-l"></div>
+      </header>
+      <main class="frame" id="main" tabindex="-1">
+        <h1 class="sr-only">Eribert Arevalo, graphic designer</h1>
+        <div
+          class="cell border-l border-b"
+          style="grid-column: 7; grid-row: 1"
+        ></div>
+
+        <!-- ROWS 2-3: cards + gaps  -->
+        <div class="cell border-r" style="grid-column: 1; grid-row: 2"></div>
+        <div
+          class="cell border-r border-b"
+          style="grid-column: 1; grid-row: 3"
+        ></div>
+
+        <a
+          class="card card-1 reveal"
+          href="/rollout/"
+          style="grid-column: 2; grid-row: 2 / 4"
+        >
+          <div class="card__media">
+            <img
+              src="assets/uzi/fronttest.jpg"
+              alt="CD cover artwork from the Luv Is Rage 2 album reimagining"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="card__label border-b">
+            <span class="card__meta">
+              <span class="card__name h1">Luv Is Rage 2 </span>
+              <span class="card__role body"
+                >Art Direction &amp; Graphic Design
+              </span>
+            </span>
+          </div>
+        </a>
+
+        <div
+          class="cell border-l border-r"
+          style="grid-column: 3; grid-row: 2"
+        ></div>
+        <div
+          class="cell border-l border-r border-b"
+          style="grid-column: 3; grid-row: 3"
+        ></div>
+
+        <a
+          class="card card-2 reveal"
+          href="/badlands/"
+          style="grid-column: 4; grid-row: 2 / 4"
+        >
+          <div class="card__media">
+            <img
+              src="assets/badlands/brandguidefront.webp"
+              alt="Cover of the Badlands brand guide"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="card__label border-b">
+            <span class="card__meta">
+              <span class="card__name h1">Badlands</span>
+              <span class="card__role body">Editorial &amp; Brand Design</span>
+            </span>
+          </div>
+        </a>
+
+        <div
+          class="cell border-l border-r"
+          style="grid-column: 5; grid-row: 2"
+        ></div>
+        <div
+          class="cell border-l border-r border-b"
+          style="grid-column: 5; grid-row: 3"
+        ></div>
+
+        <a
+          class="card card-6 reveal"
+          href="/plastic/"
+          style="grid-column: 6; grid-row: 2 / 4"
+        >
+          <div class="card__media">
+            <img
+              src="assets/newwave/ticket.webp"
+              alt="Ticket design from the PLASTIC brand identity"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="card__label border-b">
+            <span class="card__meta">
+              <span class="card__name h1">PLASTIC</span>
+              <span class="card__role body">Brand Identity Design</span>
+            </span>
+          </div>
+        </a>
+
+        <div class="cell border-l" style="grid-column: 7; grid-row: 2"></div>
+        <div
+          class="cell border-l border-b"
+          style="grid-column: 7; grid-row: 3"
+        ></div>
+
+        <!-- ROW 4: footer -->
+        <div class="cell border-r" style="grid-column: 1; grid-row: 4"></div>
+        <div class="footer" style="grid-row: 4">
+          © 2026 Eribert Arevalo. All rights reserved.
+        </div>
+        <div class="cell border-l" style="grid-column: 7; grid-row: 4"></div>
+      </main>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

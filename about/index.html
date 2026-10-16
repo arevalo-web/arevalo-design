@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Eribert Arevalo</title>
+    <meta
+      name="description"
+      content="About Eribert Arevalo — a visual designer based in Las Vegas."
+    />
+    <meta property="og:title" content="About — arevalo.design" />
+    <meta
+      property="og:description"
+      content="Visual designer based in Las Vegas."
+    />
+    <meta property="og:url" content="https://arevalo.design/about/" />
+    <link rel="canonical" href="https://arevalo.design/about/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://arevalo.design/assets/headshot/png.jpg"
+    />
+    <meta property="og:image:alt" content="Portrait of Eribert Arevalo." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="icon"
+      href="../assets/favicon/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/favicon/apple-touch-icon.png"
+    />
+
+    <!-- class hook + saved theme before paint -->
+    <script>
+      (function () {
+        var r = document.documentElement;
+        r.classList.add("js");
+        try {
+          if (localStorage.getItem("theme") === "dark")
+            r.classList.add("theme-dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link h2" href="#main">[Skip to content]</a>
+    <div class="sheet">
+      <header class="site-header">
+        <div class="cell border-r"></div>
+        <div class="hero">
+          <nav class="hero-nav" aria-label="Primary">
+            <a class="h2" href="/">[Work]</a>
+            <a class="h2" href="/gallery/">[Gallery]</a>
+            <a class="h2" href="/about/" aria-current="page">[About]</a>
+          </nav>
+          <button
+            class="theme-switch h2"
+            type="button"
+            aria-pressed="false"
+            aria-label="Switch to dark mode"
+          >
+            [<span class="opt opt-light">Light</span> /
+            <span class="opt opt-dark">Dark</span>]
+          </button>
+        </div>
+        <div class="cell border-l"></div>
+      </header>
+      <main class="frame" id="main" tabindex="-1">
+        <div
+          class="cell border-l border-b"
+          style="grid-column: 7; grid-row: 1"
+        ></div>
+
+        <!-- ROW 2: portrait + bio -->
+        <div
+          class="cell border-r border-b"
+          style="grid-column: 1; grid-row: 2"
+        ></div>
+
+        <div
+          class="about-photo reveal border-b"
+          style="grid-column: 2; grid-row: 2"
+        >
+          <img
+            src="../assets/headshot/placeholder.webp"
+            alt="Portrait of Eribert Arevalo"
+          />
+        </div>
+
+        <div
+          class="cell border-l border-r border-b"
+          style="grid-column: 3; grid-row: 2"
+        ></div>
+
+        <div class="about border-b" style="grid-column: 4 / 7; grid-row: 2">
+          <h1 class="title">Hello!</h1>
+
+          <p class="body about__bio">
+            I've always had an interest in art—honestly, I just liked things
+            that looked cool. My interest in design really grew at UNLV. I
+            initially didn't have design as my major, but after switching over,
+            I soon fell in love with it. Learning from great teachers and
+            legends of the field really helped me understand how design is done.
+            I hope to use my design knowledge to branch into different areas of
+            the industry; whether it's UI/UX or production-based design, I'm
+            always ready to learn new things. When I'm not focusing on design, I
+            enjoy spending my time painting, lifting, or watching scary
+            movies—Hereditary being my favorite. Ultimately, I hope to find a
+            career where I can continue to grow and learn.
+          </p>
+
+          <dl class="about__contact">
+            <dt class="body">Email</dt>
+            <dd class="body">
+              <a class="about__link" href="mailto:eribert.arevalo@gmail.com"
+                >eribert.arevalo@gmail.com</a
+              >
+            </dd>
+            <dt class="body">Phone</dt>
+            <dd class="body">(702) 580-8474</dd>
+          </dl>
+
+          <a
+            class="about__resume h2"
+            href="../assets/resume/resume.pdf"
+            download
+            aria-label="Download resume (PDF)"
+            >[Download Resume]</a
+          >
+        </div>
+
+        <div
+          class="cell border-l border-b"
+          style="grid-column: 7; grid-row: 2"
+        ></div>
+
+        <!-- ROW 4: footer band -->
+        <div class="cell border-r" style="grid-column: 1; grid-row: 4"></div>
+        <div class="footer" style="grid-column: 2 / 7; grid-row: 4">
+          © 2026 Eribert Arevalo. All rights reserved.
+        </div>
+        <div class="cell border-l" style="grid-column: 7; grid-row: 4"></div>
+      </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
