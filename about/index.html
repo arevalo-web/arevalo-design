@@ -6,22 +6,54 @@
     <title>About — Eribert Arevalo</title>
     <meta
       name="description"
-      content="About Eribert Arevalo — a visual designer based in Las Vegas."
+      content="About Eribert Arevalo — a graphic designer based in Las Vegas, open to full-time, freelance and contract work."
     />
     <meta property="og:title" content="About — arevalo.design" />
     <meta
       property="og:description"
-      content="Visual designer based in Las Vegas."
+      content="Graphic designer based in Las Vegas, open to full-time, freelance and contract work."
     />
     <meta property="og:url" content="https://arevalo.design/about/" />
     <link rel="canonical" href="https://arevalo.design/about/" />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://arevalo.design/assets/headshot/placeholder.webp"
+      content="https://arevalo.design/assets/previews/precandid.jpg"
     />
-    <meta property="og:image:alt" content="Portrait of Eribert Arevalo." />
+    <meta
+      property="og:image:alt"
+      content="Eribert Arevalo, graphic designer based in Las Vegas."
+    />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      href="../assets/fonts/roboto-slab-v36-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../assets/fonts/roboto-slab-v36-latin-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../assets/fonts/roboto-slab-v36-latin-200.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../assets/fonts/cal-sans-v2-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <link rel="stylesheet" href="../css/style.css" />
     <link
@@ -34,7 +66,7 @@
       href="../assets/favicon/apple-touch-icon.png"
     />
 
-    <!-- class hook + saved theme before paint -->
+    <!-- class hook + saved theme before paint; if script.js never loads, un-hide the fade-in content -->
     <script>
       (function () {
         var r = document.documentElement;
@@ -43,6 +75,9 @@
           if (localStorage.getItem("theme") === "dark")
             r.classList.add("theme-dark");
         } catch (e) {}
+        setTimeout(function () {
+          if (!r.classList.contains("js-ready")) r.classList.remove("js");
+        }, 4000);
       })();
     </script>
   </head>
@@ -50,10 +85,26 @@
     <a class="skip-link h2" href="#main">[Skip to content]</a>
     <div class="sheet">
       <header class="site-header">
-        <div class="cell border-r"></div>
-        <div class="hero">
+        <a
+          class="site-logo border-r"
+          href="/"
+          aria-label="Eribert Arevalo, home"
+        >
+          <img
+            class="site-logo__img site-logo__img--light"
+            src="/assets/logo/logo.svg"
+            alt=""
+          />
+          <img
+            class="site-logo__img site-logo__img--dark"
+            src="/assets/logo/logow.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <div class="hero" id="site-menu">
           <nav class="hero-nav" aria-label="Primary">
-            <a class="h2" href="/">[Work]</a>
+            <a class="h2" href="/">[Case Studies]</a>
             <a class="h2" href="/gallery/">[Gallery]</a>
             <a class="h2" href="/about/" aria-current="page">[About]</a>
           </nav>
@@ -61,90 +112,164 @@
             class="theme-switch h2"
             type="button"
             aria-pressed="false"
-            aria-label="Switch to dark mode"
+            aria-label="Dark mode"
           >
             [<span class="opt opt-light">Light</span> /
             <span class="opt opt-dark">Dark</span>]
           </button>
         </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open menu"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
         <div class="cell border-l"></div>
       </header>
-      <main class="frame" id="main" tabindex="-1">
-        <div
-          class="cell border-l border-b"
-          style="grid-column: 7; grid-row: 1"
-        ></div>
 
-        <!-- ROW 2: portrait + bio -->
-        <div
-          class="cell border-r border-b"
-          style="grid-column: 1; grid-row: 2"
-        ></div>
+      <main class="art-frame" id="main" tabindex="-1">
+        <!-- ROW 1: portrait + intro, availability, contact -->
+        <section class="row row--triple">
+          <div class="cell border-r"></div>
+          <div class="about-photo reveal">
+            <img
+              src="../assets/headshot/candid.webp"
+              alt="Portrait of Eribert Arevalo"
+            />
+          </div>
+          <div class="cell border-l border-r"></div>
+          <div class="about" style="grid-column: 4 / 7">
+            <h1 class="title">Hello!</h1>
 
-        <div
-          class="about-photo reveal border-b"
-          style="grid-column: 2; grid-row: 2"
-        >
-          <img
-            src="../assets/headshot/placeholder.webp"
-            alt="Portrait of Eribert Arevalo"
-          />
-        </div>
+            <p class="body about__bio">
+              I’ve always had an eye for art and visual culture, but my passion
+              for design truly took off at UNLV. After switching to graphic
+              design, I fell in love with the discipline. Learning from great
+              mentors helped me build a strong foundation in visual
+              problem-solving, brand identity, and print production.
+            </p>
+            <p class="body about__bio">
+              I’m always eager to learn new skills and expand my craft. Outside
+              of design, you’ll usually find me oil painting, weightlifting, or
+              watching horror movies (with Hereditary at the top of the list).
+            </p>
+            <p class="body about__bio">
+              I’m actively seeking full-time positions, internships, freelance,
+              and contract opportunities in design and pre-press production,
+              available locally in Las Vegas or remotely.
+            </p>
 
-        <div
-          class="cell border-l border-r border-b"
-          style="grid-column: 3; grid-row: 2"
-        ></div>
-
-        <div class="about border-b" style="grid-column: 4 / 7; grid-row: 2">
-          <h1 class="title">Hello!</h1>
-
-          <p class="body about__bio">
-            My name is Eribert, I also go by Eddy, I am a graphic design student
-            at UNLV. I've always had an interest in art—honestly, I just liked
-            things that looked cool. My interest in design really grew at UNLV.
-            I initially didn't have design as my major, but after switching
-            over, I soon fell in love with it. Learning from great teachers and
-            legends of the field really helped me understand how design is done.
-            I hope to use my design knowledge to branch into different areas of
-            the industry; whether it's UI/UX or production-based design, I'm
-            always ready to learn new things. When I'm not focusing on design, I
-            enjoy spending my time painting, lifting, or watching scary
-            movies—Hereditary being my favorite. Ultimately, I hope to find a
-            career where I can continue to grow and learn.
-          </p>
-
-          <dl class="about__contact">
-            <dt class="body">Email</dt>
-            <dd class="body">
-              <a class="about__link" href="mailto:eribert.arevalo@gmail.com"
-                >eribert.arevalo@gmail.com</a
+            <div class="intro__links">
+              <a class="h2" href="mailto:eribert.arevalo@gmail.com"
+                >[Email Me]</a
               >
-            </dd>
-            <dt class="body">Phone</dt>
-            <dd class="body">(702) 580-8474</dd>
-          </dl>
+              <a
+                class="h2"
+                href="https://www.linkedin.com/in/eribert/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Eribert Arevalo on LinkedIn (opens in a new tab)"
+                >[LinkedIn]</a
+              >
+              <a
+                class="h2"
+                href="../assets/resume/Eribert-Arevalo-Resume.pdf"
+                download
+                aria-label="Download resume (PDF)"
+                >[Resume]</a
+              >
+            </div>
+          </div>
+          <div class="cell border-l" style="grid-column: 7"></div>
+        </section>
 
-          <a
-            class="about__resume h2"
-            href="../assets/resume/resume.pdf"
-            download
-            aria-label="Download resume (PDF)"
-            >[Download Resume]</a
-          >
-        </div>
+        <!-- ROW 2: skills, tools, education -->
+        <section class="row row--triple about-boxes">
+          <div class="cell border-r"></div>
 
-        <div
-          class="cell border-l border-b"
-          style="grid-column: 7; grid-row: 2"
-        ></div>
+          <div class="art-text art-text--center">
+            <h2 class="h2">Skills</h2>
+            <p class="thin about__sub">Core Disciplines</p>
+            <ul class="about__list body">
+              <li>UI/UX Design</li>
+              <li>Typography</li>
+              <li>Branding &amp; Identity</li>
+              <li>Layout &amp; Grid Systems</li>
+              <li>Print Production</li>
+              <li>Color Theory</li>
+              <li>Wireframing &amp; Prototyping</li>
+              <li>HTML/CSS</li>
+            </ul>
+            <p class="thin about__sub">Apparel &amp; Creative</p>
+            <ul class="about__list body">
+              <li>Digital &amp; Physical Mockups</li>
+              <li>Streetwear Concepts</li>
+              <li>Visual Storytelling</li>
+              <li>Concept Development</li>
+            </ul>
+          </div>
 
-        <!-- ROW 4: footer band -->
-        <div class="cell border-r" style="grid-column: 1; grid-row: 4"></div>
-        <div class="footer" style="grid-column: 2 / 7; grid-row: 4">
-          © 2026 Eribert Arevalo. All rights reserved.
-        </div>
-        <div class="cell border-l" style="grid-column: 7; grid-row: 4"></div>
+          <div class="cell border-l border-r"></div>
+
+          <div class="art-text art-text--center">
+            <h2 class="h2">Tools</h2>
+            <p class="thin about__sub">Adobe</p>
+            <ul class="about__list body">
+              <li>Illustrator</li>
+              <li>Photoshop</li>
+              <li>InDesign</li>
+              <li>Premiere</li>
+              <li>Acrobat</li>
+            </ul>
+            <p class="thin about__sub">Other Tools</p>
+            <ul class="about__list body">
+              <li>Figma</li>
+              <li>VS Code</li>
+
+              <li>Microsoft Office</li>
+            </ul>
+          </div>
+
+          <div class="cell border-l border-r"></div>
+          <div class="art-text art-text--center">
+            <h2 class="h2">Education</h2>
+            <p class="thin about__sub">School</p>
+            <ul class="about__list body">
+              <li>
+                B.S. in Graphic Design and Media<br />
+                University of Nevada, Las Vegas<br />
+                AUG 2022&ndash;MAY 2027
+              </li>
+            </ul>
+            <p class="thin about__sub">Languages</p>
+            <ul class="about__list body">
+              <li>English (Fluent)</li>
+              <li>Spanish (Advanced)</li>
+            </ul>
+          </div>
+
+          <div class="cell border-l"></div>
+        </section>
+
+        <!-- FOOTER -->
+        <section class="row row--text">
+          <div class="cell border-r"></div>
+          <div class="footer">
+            <span>© 2026 Eribert Arevalo. All rights reserved.</span>
+            <span
+              >Get in touch:
+              <a class="footer__link" href="mailto:eribert.arevalo@gmail.com"
+                >eribert.arevalo@gmail.com</a
+              ></span
+            >
+          </div>
+          <div class="cell border-l"></div>
+        </section>
       </main>
     </div>
 

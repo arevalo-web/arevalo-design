@@ -67,6 +67,7 @@
       href="../assets/favicon/apple-touch-icon.png"
     />
 
+    <!-- class hook + saved theme before paint; if script.js never loads, un-hide the fade-in content -->
     <script>
       (function () {
         var r = document.documentElement;
@@ -75,6 +76,9 @@
           if (localStorage.getItem("theme") === "dark")
             r.classList.add("theme-dark");
         } catch (e) {}
+        setTimeout(function () {
+          if (!r.classList.contains("js-ready")) r.classList.remove("js");
+        }, 4000);
       })();
     </script>
   </head>
@@ -82,10 +86,26 @@
     <a class="skip-link h2" href="#main">[Skip to content]</a>
     <div class="sheet">
       <header class="site-header">
-        <div class="cell border-r"></div>
-        <div class="hero">
+        <a
+          class="site-logo border-r"
+          href="/"
+          aria-label="Eribert Arevalo, home"
+        >
+          <img
+            class="site-logo__img site-logo__img--light"
+            src="/assets/logo/logo.svg"
+            alt=""
+          />
+          <img
+            class="site-logo__img site-logo__img--dark"
+            src="/assets/logo/logow.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <div class="hero" id="site-menu">
           <nav class="hero-nav" aria-label="Primary">
-            <a class="h2" href="/" aria-current="page">[Work]</a>
+            <a class="h2" href="/" aria-current="true">[Case Studies]</a>
             <a class="h2" href="/gallery/">[Gallery]</a>
             <a class="h2" href="/about/">[About]</a>
           </nav>
@@ -93,12 +113,23 @@
             class="theme-switch h2"
             type="button"
             aria-pressed="false"
-            aria-label="Switch to dark mode"
+            aria-label="Dark mode"
           >
             [<span class="opt opt-light">Light</span> /
             <span class="opt opt-dark">Dark</span>]
           </button>
         </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open menu"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
         <div class="cell border-l"></div>
       </header>
 
@@ -116,7 +147,11 @@
                   Magazine, Brand Guide, Apparel &amp; Website
                 </dd>
                 <dt class="h2">Timeline</dt>
-                <dd class="body">Semester long</dd>
+                <dd class="body">Semester-Long Project</dd>
+                <dt class="h2">Tools</dt>
+                <dd class="body">
+                  Illustrator, Photoshop, InDesign, Premiere Pro, Figma
+                </dd>
               </dl>
             </div>
           </div>
@@ -125,7 +160,7 @@
             <img
               src="../assets/badlands/frontback.webp"
               alt="Badlands magazine front and back cover"
-              loading="lazy"
+              fetchpriority="high"
             />
             <figcaption class="shot__cap thin">
               Magazine | Front &amp; Back
@@ -184,7 +219,7 @@
           <div class="cell border-r"></div>
           <figure class="shot reveal">
             <img
-              src="../assets/badlands/logosketchs.webp"
+              src="../assets/badlands/logosketches.webp"
               alt="Badlands logo sketches"
               loading="lazy"
             />
@@ -193,7 +228,6 @@
             </figcaption>
           </figure>
           <div class="cell border-l border-r"></div>
-          <!-- HOLDER: swap this file (and caption) when the second sketch is ready -->
           <figure class="shot reveal">
             <img
               src="../assets/badlands/magazinesketches.webp"
@@ -316,7 +350,7 @@
               ><button
                 class="shot__play h2"
                 type="button"
-                aria-label="Badlands website launch video"
+                aria-label="Play video"
               >
                 [Play]
               </button>
@@ -329,14 +363,22 @@
         </section>
         <section class="row row--text">
           <div class="cell border-r"></div>
-          <a class="proj-next h2" href="../plastic/"
+          <a class="proj-next h2" href="/plastic/"
             >[Next Project &#124; PLASTIC]</a
           >
           <div class="cell border-l"></div>
         </section>
         <section class="row row--text">
           <div class="cell border-r"></div>
-          <div class="footer">© 2026 Eribert Arevalo. All rights reserved.</div>
+          <div class="footer">
+            <span>© 2026 Eribert Arevalo. All rights reserved.</span>
+            <span
+              >Get in touch:
+              <a class="footer__link" href="mailto:eribert.arevalo@gmail.com"
+                >eribert.arevalo@gmail.com</a
+              ></span
+            >
+          </div>
           <div class="cell border-l"></div>
         </section>
       </main>

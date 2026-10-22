@@ -25,10 +25,41 @@
       content="CD cover artwork from the Luv Is Rage 2 album reimagining."
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      href="assets/fonts/roboto-slab-v36-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/roboto-slab-v36-latin-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/roboto-slab-v36-latin-200.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/cal-sans-v2-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
 
+    <!-- class hook + saved theme before paint; if script.js never loads, un-hide the fade-in content -->
     <script>
       (function () {
         var r = document.documentElement;
@@ -37,6 +68,9 @@
           if (localStorage.getItem("theme") === "dark")
             r.classList.add("theme-dark");
         } catch (e) {}
+        setTimeout(function () {
+          if (!r.classList.contains("js-ready")) r.classList.remove("js");
+        }, 4000);
       })();
     </script>
   </head>
@@ -44,10 +78,26 @@
     <a class="skip-link h2" href="#main">[Skip to content]</a>
     <div class="sheet">
       <header class="site-header">
-        <div class="cell border-r"></div>
-        <div class="hero">
+        <a
+          class="site-logo border-r"
+          href="/"
+          aria-label="Eribert Arevalo, home"
+        >
+          <img
+            class="site-logo__img site-logo__img--light"
+            src="/assets/logo/logo.svg"
+            alt=""
+          />
+          <img
+            class="site-logo__img site-logo__img--dark"
+            src="/assets/logo/logow.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <div class="hero" id="site-menu">
           <nav class="hero-nav" aria-label="Primary">
-            <a class="h2" href="/" aria-current="page">[Work]</a>
+            <a class="h2" href="/" aria-current="page">[Case Studies]</a>
             <a class="h2" href="/gallery/">[Gallery]</a>
             <a class="h2" href="/about/">[About]</a>
           </nav>
@@ -55,16 +105,49 @@
             class="theme-switch h2"
             type="button"
             aria-pressed="false"
-            aria-label="Switch to dark mode"
+            aria-label="Dark mode"
           >
             [<span class="opt opt-light">Light</span> /
             <span class="opt opt-dark">Dark</span>]
           </button>
         </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open menu"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
         <div class="cell border-l"></div>
       </header>
       <main class="frame" id="main" tabindex="-1">
-        <h1 class="sr-only">Eribert Arevalo, graphic designer</h1>
+        <div
+          class="cell border-r border-b"
+          style="grid-column: 1; grid-row: 1"
+        ></div>
+        <div class="intro border-b" style="grid-column: 2 / 7; grid-row: 1">
+          <h1 class="title intro__title">
+            Eribert Arevalo — Graphic Designer in Las Vegas.
+          </h1>
+          <p class="body intro__text">
+            Branding, editorial, prepress, and design. Open to full-time roles
+            and opportunities.
+          </p>
+          <div class="intro__links">
+            <a class="h2" href="mailto:eribert.arevalo@gmail.com">[Email Me]</a>
+            <a
+              class="h2"
+              href="assets/resume/Eribert-Arevalo-Resume.pdf"
+              download
+              aria-label="Download resume (PDF)"
+              >[Resume]</a
+            >
+          </div>
+        </div>
         <div
           class="cell border-l border-b"
           style="grid-column: 7; grid-row: 1"
@@ -78,24 +161,24 @@
         ></div>
 
         <a
-          class="card card-1 reveal"
+          class="card reveal"
           href="/rollout/"
           style="grid-column: 2; grid-row: 2 / 4"
         >
           <div class="card__media">
             <img
-              src="assets/uzi/fronttest.jpg"
+              src="assets/uzi/frontthumbnail.webp"
               alt="CD cover artwork from the Luv Is Rage 2 album reimagining"
-              loading="lazy"
+              fetchpriority="high"
             />
           </div>
 
           <div class="card__label border-b">
             <span class="card__meta">
-              <span class="card__name h1">Luv Is Rage 2 </span>
+              <span class="card__name h1">Luv Is Rage 2</span>
               <span class="card__role body"
-                >Art Direction &amp; Graphic Design
-              </span>
+                >Art Direction &amp; Graphic Design</span
+              >
             </span>
           </div>
         </a>
@@ -118,7 +201,6 @@
             <img
               src="assets/badlands/brandguidefront.webp"
               alt="Cover of the Badlands brand guide"
-              loading="lazy"
             />
           </div>
 
@@ -140,7 +222,7 @@
         ></div>
 
         <a
-          class="card card-6 reveal"
+          class="card card-3 reveal"
           href="/plastic/"
           style="grid-column: 6; grid-row: 2 / 4"
         >
@@ -148,7 +230,6 @@
             <img
               src="assets/newwave/ticket.webp"
               alt="Ticket design from the PLASTIC brand identity"
-              loading="lazy"
             />
           </div>
 
@@ -169,7 +250,13 @@
         <!-- ROW 4: footer -->
         <div class="cell border-r" style="grid-column: 1; grid-row: 4"></div>
         <div class="footer" style="grid-row: 4">
-          © 2026 Eribert Arevalo. All rights reserved.
+          <span>© 2026 Eribert Arevalo. All rights reserved.</span>
+          <span
+            >Get in touch:
+            <a class="footer__link" href="mailto:eribert.arevalo@gmail.com"
+              >eribert.arevalo@gmail.com</a
+            ></span
+          >
         </div>
         <div class="cell border-l" style="grid-column: 7; grid-row: 4"></div>
       </main>

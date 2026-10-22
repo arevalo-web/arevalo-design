@@ -41,16 +41,10 @@
     />
 
     <link rel="stylesheet" href="/css/style.css" />
-    <link
-      rel="icon"
-      href="/assets/favicon/favicon.svg?v=2"
-      type="image/svg+xml"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="/assets/favicon/apple-touch-icon.png?v=2"
-    />
+    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
 
+    <!-- class hook + saved theme before paint; if script.js never loads, un-hide the fade-in content -->
     <script>
       (function () {
         var r = document.documentElement;
@@ -59,6 +53,9 @@
           if (localStorage.getItem("theme") === "dark")
             r.classList.add("theme-dark");
         } catch (e) {}
+        setTimeout(function () {
+          if (!r.classList.contains("js-ready")) r.classList.remove("js");
+        }, 4000);
       })();
     </script>
   </head>
@@ -67,10 +64,26 @@
 
     <div class="sheet">
       <header class="site-header">
-        <div class="cell border-r"></div>
-        <div class="hero">
+        <a
+          class="site-logo border-r"
+          href="/"
+          aria-label="Eribert Arevalo, home"
+        >
+          <img
+            class="site-logo__img site-logo__img--light"
+            src="/assets/logo/logo.svg"
+            alt=""
+          />
+          <img
+            class="site-logo__img site-logo__img--dark"
+            src="/assets/logo/logow.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <div class="hero" id="site-menu">
           <nav class="hero-nav" aria-label="Primary">
-            <a class="h2" href="/">[Work]</a>
+            <a class="h2" href="/">[Case Studies]</a>
             <a class="h2" href="/gallery/">[Gallery]</a>
             <a class="h2" href="/about/">[About]</a>
           </nav>
@@ -78,12 +91,23 @@
             class="theme-switch h2"
             type="button"
             aria-pressed="false"
-            aria-label="Switch to dark mode"
+            aria-label="Dark mode"
           >
             [<span class="opt opt-light">Light</span> /
             <span class="opt opt-dark">Dark</span>]
           </button>
         </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open menu"
+        >
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
         <div class="cell border-l"></div>
       </header>
 
@@ -104,7 +128,7 @@
           <p class="thin error-page__code">Error 404</p>
           <h1 class="title">Page not found</h1>
           <p class="body error-page__message">
-            The page you're looking for doesn't exist, or it has moved somewhere
+            The page you’re looking for doesn’t exist, or it has moved somewhere
             else.
           </p>
           <a class="h2 error-page__link" href="/">[Return Home]</a>
@@ -118,7 +142,13 @@
         <!-- ROW 3: footer -->
         <div class="cell border-r" style="grid-column: 1; grid-row: 3"></div>
         <div class="footer" style="grid-column: 2 / 7; grid-row: 3">
-          © 2026 Eribert Arevalo. All rights reserved.
+          <span>© 2026 Eribert Arevalo. All rights reserved.</span>
+          <span
+            >Get in touch:
+            <a class="footer__link" href="mailto:eribert.arevalo@gmail.com"
+              >eribert.arevalo@gmail.com</a
+            ></span
+          >
         </div>
         <div class="cell border-l" style="grid-column: 7; grid-row: 3"></div>
       </div>
